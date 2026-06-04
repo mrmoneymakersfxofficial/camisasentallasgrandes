@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
@@ -21,18 +22,21 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="font-semibold text-background">Enlaces Rápidos</h4>
             <nav className="flex flex-col gap-2" aria-label="Enlaces del pie de página">
-              <a href="#inicio" className="text-sm text-background/60 hover:text-primary transition-colors">
+              <Link href="/" className="text-sm text-background/60 hover:text-primary transition-colors">
                 Inicio
-              </a>
-              <a href="#catalogo" className="text-sm text-background/60 hover:text-primary transition-colors">
+              </Link>
+              <Link href="/catalogo" className="text-sm text-background/60 hover:text-primary transition-colors">
                 Catálogo
-              </a>
-              <a href="#talla" className="text-sm text-background/60 hover:text-primary transition-colors">
+              </Link>
+              <Link href="/tutalla" className="text-sm text-background/60 hover:text-primary transition-colors">
                 Calcula tu Talla
-              </a>
-              <a href="#nosotros" className="text-sm text-background/60 hover:text-primary transition-colors">
+              </Link>
+              <Link href="/nosotros" className="text-sm text-background/60 hover:text-primary transition-colors">
                 Nosotros
-              </a>
+              </Link>
+              <Link href="/contacto" className="text-sm text-background/60 hover:text-primary transition-colors">
+                Contacto
+              </Link>
             </nav>
           </div>
 

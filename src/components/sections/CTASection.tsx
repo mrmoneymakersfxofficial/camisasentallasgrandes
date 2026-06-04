@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { MessageCircle, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -67,7 +68,7 @@ export default function CTASection() {
                 className="border-white/20 text-white hover:bg-white/10 text-base px-8 py-6 rounded-xl"
                 asChild
               >
-                <a href="#catalogo">Ver Catálogo</a>
+                <Link href="/catalogo">Ver Catálogo</Link>
               </Button>
             </div>
           </div>

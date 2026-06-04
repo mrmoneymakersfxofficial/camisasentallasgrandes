@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -18,7 +20,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://algodonperuano.com"),
-  title: "Algodón Peruano Premium | Camisas Plus Size de Lujo",
+  title: {
+    default: "Algodón Peruano Premium | Camisas Plus Size de Lujo",
+    template: "%s | Algodón Peruano",
+  },
   description:
     "Descubre nuestra colección exclusiva de camisas para hombre en tallas 2XL a 6XL. 100% algodón peruano premium. Envío a todo Perú.",
   keywords: [
@@ -74,7 +79,11 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${inter.variable} font-sans antialiased`}
       >
-        {children}
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
         <Toaster />
       </body>
     </html>

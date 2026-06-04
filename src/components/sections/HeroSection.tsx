@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import { Sparkles, ArrowRight, Ruler } from "lucide-react";
 
 if (typeof window !== "undefined") {
@@ -138,10 +139,10 @@ export default function HeroSection() {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
                 asChild
               >
-                <a href="#catalogo">
+                <Link href="/catalogo">
                   Ver Catálogo
                   <ArrowRight className="size-5 ml-1" />
-                </a>
+                </Link>
               </Button>
               <Button
                 variant="outline"
@@ -149,10 +150,10 @@ export default function HeroSection() {
                 className="text-base px-8 py-6 rounded-xl border-primary/30 hover:bg-primary/5"
                 asChild
               >
-                <a href="#talla">
+                <Link href="/tutalla">
                   <Ruler className="size-5 mr-1" />
                   Calcula tu Talla
-                </a>
+                </Link>
               </Button>
             </div>
 

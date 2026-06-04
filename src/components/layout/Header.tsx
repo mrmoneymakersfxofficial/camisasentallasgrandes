@@ -1,23 +1,37 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingCart, Menu, X } from "lucide-react";
+import { ShoppingCart, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { useCartStore } from "@/store/cart";
 import WhatsAppCheckout from "@/components/sections/WhatsAppCheckout";
 
 const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Catálogo", href: "#catalogo" },
-  { label: "Tu Talla", href: "#talla" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/" },
+  { label: "Catálogo", href: "/catalogo" },
+  { label: "Tu Talla", href: "/tutalla" },
+  { label: "Nosotros", href: "/nosotros" },
+  { label: "Contacto", href: "/contacto" },
 ];
+
+function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
   const itemCount = useCartStore((s) => s.getItemCount());
   const cartOpen = useCartStore((s) => s.isOpen);
   const setCartOpen = useCartStore((s) => s.setOpen);
@@ -28,6 +42,9 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Detect if we're on the home page to decide header background
+  const isHome = pathname === "/";
+
   return (
     <>
       <motion.header
@@ -37,33 +54,43 @@ export default function Header() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-background/90 backdrop-blur-lg shadow-md border-b border-border/50"
-            : "bg-transparent"
+            : isHome
+            ? "bg-transparent"
+            : "bg-background/80 backdrop-blur-sm border-b border-border/30"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Brand */}
-            <a
-              href="#inicio"
+            <Link
+              href="/"
               className="flex items-center gap-2 group"
               aria-label="Algodón Peruano - Ir al inicio"
             >
               <span className="font-heading text-xl md:text-2xl font-bold tracking-wide text-gradient-gold">
                 ALGODÓN PERUANO
               </span>
-            </a>
+            </Link>
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-1" aria-label="Navegación principal">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
-                  className="relative px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-primary group"
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors group ${
+                    isActive(pathname, link.href)
+                      ? "text-primary"
+                      : "text-foreground/80 hover:text-primary"
+                  }`}
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-3/4 rounded-full" />
-                </a>
+                  <span
+                    className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-300 rounded-full ${
+                      isActive(pathname, link.href) ? "w-3/4" : "w-0 group-hover:w-3/4"
+                    }`}
+                  />
+                </Link>
               ))}
             </nav>
 
@@ -110,17 +137,24 @@ export default function Header() {
                   </SheetTitle>
                   <nav className="flex flex-col gap-2 mt-8" aria-label="Menú móvil">
                     {navLinks.map((link, i) => (
-                      <motion.a
+                      <motion.div
                         key={link.href}
-                        href={link.href}
                         initial={{ x: 50, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: i * 0.1 }}
-                        onClick={() => setMobileOpen(false)}
-                        className="px-4 py-3 text-lg font-medium text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-lg transition-colors"
                       >
-                        {link.label}
-                      </motion.a>
+                        <Link
+                          href={link.href}
+                          onClick={() => setMobileOpen(false)}
+                          className={`flex items-center px-4 py-3 text-lg font-medium rounded-lg transition-colors ${
+                            isActive(pathname, link.href)
+                              ? "text-primary bg-primary/5"
+                              : "text-foreground/80 hover:text-primary hover:bg-secondary/50"
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      </motion.div>
                     ))}
                   </nav>
                 </SheetContent>
