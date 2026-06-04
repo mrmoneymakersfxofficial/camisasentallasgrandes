@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String
+  price       Float
+  currency    String   @default("PEN")
+  category    String   // "casual" or "vestir"
+  style       String   // e.g., "Polo", "Camisa Formal", "T-Shirt"
+  color       String
+  sizes       String   // JSON array string: '["2XL","3XL","4XL","5XL"]'
+  inStock     Boolean  @default(true)
+  featured    Boolean  @default(false)
+  image       String   // path to image in /images/products/
+  material    String   @default("100% Algodón Peruano")
+  care        String   @default("Lavar a mano o máquina en ciclo suave")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SiteContent {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+  type  String @default("text") // text, richtext, image
+}
+
+model Order {
+  id          String   @id @default(cuid())
+  customerName String
+  customerPhone String
+  items       String   // JSON array of order items
+  total       Float
+  status      String   @default("pending") // pending, confirmed, shipped, delivered
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
