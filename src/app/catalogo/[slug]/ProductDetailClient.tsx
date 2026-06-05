@@ -12,11 +12,13 @@ import {
   Shield,
   RefreshCw,
   ChevronRight,
+  Heart,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useCartStore } from "@/store/cart";
+import { useFavoritesStore } from "@/store/favorites";
 import { useToast } from "@/hooks/use-toast";
 
 interface Product {
@@ -69,6 +71,8 @@ export default function ProductDetailClient({
   const addItem = useCartStore((s) => s.addItem);
   const setCartOpen = useCartStore((s) => s.setOpen);
   const { toast } = useToast();
+  const isFav = useFavoritesStore((s) => s.isFavorite(product.id));
+  const toggleFav = useFavoritesStore((s) => s.toggleFavorite);
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -245,15 +249,44 @@ export default function ProductDetailClient({
                 </div>
               </div>
 
-              {/* Add to Cart */}
-              <Button
-                onClick={handleAddToCart}
-                size="lg"
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-7 text-lg rounded-xl gap-2 shadow-lg hover:shadow-xl transition-all"
-              >
-                <ShoppingCart className="size-5" />
-                Agregar al Carrito
-              </Button>
+              {/* Favorite + Add to Cart */}
+              <div className="flex items-center gap-3">
+                <Button
+                  onClick={() => {
+                    toggleFav({
+                      id: product.id,
+                      name: product.name,
+                      slug: product.slug,
+                      price: product.price,
+                      image: product.image,
+                      color: product.color,
+                      sizes: product.sizes,
+                    });
+                    toast({
+                      title: isFav ? "Eliminado de favoritos" : "Agregado a favoritos",
+                      description: product.name,
+                    });
+                  }}
+                  size="lg"
+                  variant={isFav ? "default" : "outline"}
+                  className={`flex-shrink-0 rounded-xl border-2 ${
+                    isFav
+                      ? "bg-red-500 hover:bg-red-600 text-white border-red-500"
+                      : "border-primary/30 hover:border-primary hover:bg-primary/5"
+                  }`}
+                  aria-label={isFav ? "Quitar de favoritos" : "Agregar a favoritos"}
+                >
+                  <Heart className={`size-5 ${isFav ? "fill-current" : ""}`} />
+                </Button>
+                <Button
+                  onClick={handleAddToCart}
+                  size="lg"
+                  className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 py-7 text-lg rounded-xl gap-2 shadow-lg hover:shadow-xl transition-all"
+                >
+                  <ShoppingCart className="size-5" />
+                  Agregar al Carrito
+                </Button>
+              </div>
 
               {/* Quick Buy via WhatsApp */}
               <Button

@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -21,46 +22,46 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://algodonperuano.com"),
   title: {
-    default: "Algodón Peruano Premium | Camisas Plus Size de Lujo",
-    template: "%s | Algodón Peruano",
+    default: "Algodon Peruano Premium | Camisas Plus Size de Lujo",
+    template: "%s | Algodon Peruano",
   },
   description:
-    "Descubre nuestra colección exclusiva de camisas para hombre en tallas 2XL a 6XL. 100% algodón peruano premium. Envío a todo Perú.",
+    "Descubre nuestra coleccion exclusiva de camisas para hombre en tallas 2XL a 6XL. 100% algodon peruano premium. Envio a todo Peru.",
   keywords: [
     "camisas plus size",
     "camisas grandes",
-    "algodón peruano",
+    "algodon peruano",
     "camisas 2XL 3XL 4XL 5XL 6XL",
     "camisas premium hombre",
-    "ropa talla grande Perú",
+    "ropa talla grande Peru",
     "camisas Pima",
-    "camisas algodón peruano",
+    "camisas algodon peruano",
   ],
-  authors: [{ name: "Algodón Peruano" }],
+  authors: [{ name: "Algodon Peruano" }],
   icons: {
-    icon: "/images/hero-shirt-1.png",
+    icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Algodón Peruano Premium | Camisas Plus Size de Lujo",
+    title: "Algodon Peruano Premium | Camisas Plus Size de Lujo",
     description:
-      "Colección exclusiva de camisas para hombre en tallas 2XL a 6XL. 100% algodón peruano premium.",
+      "Coleccion exclusiva de camisas para hombre en tallas 2XL a 6XL. 100% algodon peruano premium.",
     type: "website",
     locale: "es_PE",
-    siteName: "Algodón Peruano",
+    siteName: "Algodon Peruano",
     images: [
       {
         url: "/images/hero-shirt-1.png",
         width: 1200,
         height: 630,
-        alt: "Algodón Peruano - Camisas Premium Plus Size",
+        alt: "Algodon Peruano - Camisas Premium Plus Size",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Algodón Peruano Premium | Camisas Plus Size de Lujo",
+    title: "Algodon Peruano Premium | Camisas Plus Size de Lujo",
     description:
-      "Colección exclusiva de camisas para hombre en tallas 2XL a 6XL. 100% algodón peruano premium.",
+      "Coleccion exclusiva de camisas para hombre en tallas 2XL a 6XL. 100% algodon peruano premium.",
     images: ["/images/hero-shirt-1.png"],
   },
   robots: {
@@ -81,9 +82,11 @@ export default function RootLayout({
       >
         <div className="min-h-screen flex flex-col">
           <Header />
-          <main className="flex-1">{children}</main>
+          {/* pb-20 on mobile to account for fixed bottom nav (h ~80px) */}
+          <main className="flex-1 pb-20 md:pb-0">{children}</main>
           <Footer />
         </div>
+        <MobileBottomNav />
         <Toaster />
       </body>
     </html>

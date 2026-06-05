@@ -4,10 +4,11 @@ import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ShoppingCart, ArrowRight, Star } from "lucide-react";
+import { ShoppingCart, ArrowRight, Star, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCartStore } from "@/store/cart";
+import { useFavoritesStore } from "@/store/favorites";
 import { useToast } from "@/hooks/use-toast";
 
 interface Product {
@@ -38,6 +39,8 @@ export default function CatalogPreview() {
   const [selectedSize, setSelectedSize] = useState<Record<string, string>>({});
   const addItem = useCartStore((s) => s.addItem);
   const setCartOpen = useCartStore((s) => s.setOpen);
+  const toggleFav = useFavoritesStore((s) => s.toggleFavorite);
+  const isFav = useFavoritesStore((s) => s.isFavorite);
   const { toast } = useToast();
 
   const fetchProducts = useCallback(async () => {
@@ -139,6 +142,34 @@ export default function CatalogPreview() {
                         Destacado
                       </Badge>
                     )}
+                    {/* Favorite button */}
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleFav({
+                          id: product.id,
+                          name: product.name,
+                          slug: product.slug,
+                          price: product.price,
+                          image: product.image,
+                          color: product.color,
+                          sizes: product.sizes,
+                        });
+                        toast({
+                          title: isFav(product.id) ? "Eliminado de favoritos" : "Agregado a favoritos",
+                          description: product.name,
+                        });
+                      }}
+                      className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center shadow-md transition-all z-10 ${
+                        isFav(product.id)
+                          ? "bg-red-500 text-white"
+                          : "bg-white/80 backdrop-blur-sm text-muted-foreground hover:text-red-500"
+                      }`}
+                      aria-label={isFav(product.id) ? "Quitar de favoritos" : "Agregar a favoritos"}
+                    >
+                      <Heart className={`size-4 ${isFav(product.id) ? "fill-current" : ""}`} />
+                    </button>
                   </div>
                 </Link>
 
