@@ -1,18 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Sparkles, ArrowRight, Ruler } from "lucide-react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -23,54 +17,71 @@ export default function HeroSection() {
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let tl: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let ctx: any = null;
 
-    tl.fromTo(
-      badgeRef.current,
-      { opacity: 0, y: 30, scale: 0.9 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.8 }
-    )
-      .fromTo(
-        titleRef.current,
-        { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1 },
-        "-=0.4"
-      )
-      .fromTo(
-        subtitleRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8 },
-        "-=0.5"
-      )
-      .fromTo(
-        ctaRef.current,
-        { opacity: 0, scale: 0.9 },
-        { opacity: 1, scale: 1, duration: 0.6 },
-        "-=0.3"
-      )
-      .fromTo(
-        imageRef.current,
-        { opacity: 0, x: 80, scale: 0.95 },
-        { opacity: 1, x: 0, scale: 1, duration: 1 },
-        "-=0.8"
-      );
+    async function initGSAP() {
+      const { gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
 
-    // Parallax scroll effect
-    if (imageRef.current && heroRef.current) {
-      gsap.to(imageRef.current, {
-        yPercent: -10,
-        ease: "none",
-        scrollTrigger: {
+      tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.fromTo(
+        badgeRef.current,
+        { opacity: 0, y: 30, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.8 }
+      )
+        .fromTo(
+          titleRef.current,
+          { opacity: 0, y: 60 },
+          { opacity: 1, y: 0, duration: 1 },
+          "-=0.4"
+        )
+        .fromTo(
+          subtitleRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          "-=0.5"
+        )
+        .fromTo(
+          ctaRef.current,
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, duration: 0.6 },
+          "-=0.3"
+        )
+        .fromTo(
+          imageRef.current,
+          { opacity: 0, x: 80, scale: 0.95 },
+          { opacity: 1, x: 0, scale: 1, duration: 1 },
+          "-=0.8"
+        );
+
+      // Parallax scroll effect
+      if (imageRef.current && heroRef.current) {
+        ctx = ScrollTrigger.create({
           trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
           scrub: 1,
-        },
-      });
+          onUpdate: (self) => {
+            if (imageRef.current) {
+              gsap.set(imageRef.current, {
+                yPercent: self.progress * -10,
+              });
+            }
+          },
+        });
+      }
     }
 
+    initGSAP();
+
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      if (tl) tl.kill();
+      if (ctx) ctx.kill();
     };
   }, []);
 
@@ -105,7 +116,7 @@ export default function HeroSection() {
                   className="px-4 py-2 text-sm font-medium gap-2 border-primary/20 bg-primary/5"
                 >
                   <Sparkles className="size-4 text-primary" />
-                  100% Algodón Peruano
+                  100% Algodon Peruano
                 </Badge>
               </motion.div>
             </div>
@@ -115,7 +126,7 @@ export default function HeroSection() {
               ref={titleRef}
               className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
             >
-              <span className="text-gradient-gold">Algodón Peruano</span>
+              <span className="text-gradient-gold">Algodon Peruano</span>
               <br />
               <span className="text-foreground">de Lujo</span>
             </h1>
@@ -125,7 +136,7 @@ export default function HeroSection() {
               ref={subtitleRef}
               className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              Camisas Premium para Hombre Plus Size. Diseñadas con orgullo peruano
+              Camisas Premium para Hombre Plus Size. Disenadas con orgullo peruano
               para brindarte comodidad y elegancia excepcional.
             </p>
 
@@ -140,7 +151,7 @@ export default function HeroSection() {
                 asChild
               >
                 <Link href="/catalogo">
-                  Ver Catálogo
+                  Ver Catalogo
                   <ArrowRight className="size-5 ml-1" />
                 </Link>
               </Button>
@@ -169,7 +180,7 @@ export default function HeroSection() {
               </div>
               <div className="text-center">
                 <p className="text-2xl font-heading font-bold text-primary">Premium</p>
-                <p className="text-xs text-muted-foreground">Algodón Pima</p>
+                <p className="text-xs text-muted-foreground">Algodon Pima</p>
               </div>
             </div>
           </div>
@@ -180,7 +191,7 @@ export default function HeroSection() {
               <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl border-2 border-primary/20">
                 <Image
                   src="/images/hero-shirt-1.png"
-                  alt="Camisa premium Algodón Peruano"
+                  alt="Camisa premium Algodon Peruano"
                   fill
                   className="object-cover object-center"
                   priority
