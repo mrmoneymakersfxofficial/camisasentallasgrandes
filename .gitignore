@@ -50,5 +50,17 @@ test
 prompt
 
 server.log
+
+# SQLite database (generated via seed)
+db/
+*.db
+*.db-journal
+
+# Dev/infra files
+Caddyfile
+examples/
+download/
+worklog.md
+
 # Skills directory
 /skills/
