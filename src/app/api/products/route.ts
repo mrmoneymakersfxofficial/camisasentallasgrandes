@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getAllProducts } from "@/data/products";
 
 export async function GET(request: Request) {
   try {
@@ -7,25 +7,12 @@ export async function GET(request: Request) {
     const category = searchParams.get("category");
     const featured = searchParams.get("featured");
 
-    const where: Record<string, unknown> = {};
-    if (category && (category === "casual" || category === "vestir")) {
-      where.category = category;
-    }
-    if (featured === "true") {
-      where.featured = true;
-    }
-
-    const products = await db.product.findMany({
-      where,
-      orderBy: { createdAt: "asc" },
+    const products = getAllProducts({
+      category: category || undefined,
+      featured: featured === "true" ? true : undefined,
     });
 
-    const parsedProducts = products.map((product) => ({
-      ...product,
-      sizes: JSON.parse(product.sizes),
-    }));
-
-    return NextResponse.json(parsedProducts);
+    return NextResponse.json(products);
   } catch (error) {
     console.error("Error fetching products:", error);
     return NextResponse.json(

@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
+import { getProductBySlug, getRelatedProducts } from "@/data/products";
 import ProductDetailClient from "./ProductDetailClient";
-
-export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export async function generateStaticParams() {
+  const { products } = await import("@/data/products");
+  return products.map((p) => ({ slug: p.slug }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = await db.product.findUnique({ where: { slug } });
+  const product = getProductBySlug(slug);
 
   if (!product) {
     return { title: "Producto no encontrado" };
@@ -19,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${product.name} - Camisa Plus Size`,
-    description: `${product.description}. Tallas ${product.sizes.replace(/[\[\]"]/g, "")}. ${product.material}. Compra ahora en Algodón Peruano.`,
+    description: `${product.description}. Tallas ${product.sizes.join(", ")}. ${product.material}. Compra ahora en Algodón Peruano.`,
     openGraph: {
       title: `${product.name} | Algodón Peruano`,
       description: product.description,
@@ -38,36 +41,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = await db.product.findUnique({ where: { slug } });
+  const product = getProductBySlug(slug);
 
   if (!product) {
     notFound();
   }
 
-  // Get related products (same category, different product)
-  const relatedProducts = await db.product.findMany({
-    where: {
-      category: product.category,
-      id: { not: product.id },
-    },
-    take: 4,
-    orderBy: { createdAt: "asc" },
-  });
-
-  const parsedRelated = relatedProducts.map((p) => ({
-    ...p,
-    sizes: JSON.parse(p.sizes),
-  }));
-
-  const parsedProduct = {
-    ...product,
-    sizes: JSON.parse(product.sizes),
-  };
+  const relatedProducts = getRelatedProducts(product, 4);
 
   return (
     <ProductDetailClient
-      product={parsedProduct}
-      relatedProducts={parsedRelated}
+      product={product}
+      relatedProducts={relatedProducts}
     />
   );
 }

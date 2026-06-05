@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getProductBySlug } from "@/data/products";
 
 export async function GET(
   request: Request,
@@ -7,10 +7,7 @@ export async function GET(
 ) {
   try {
     const { slug } = await params;
-
-    const product = await db.product.findUnique({
-      where: { slug },
-    });
+    const product = getProductBySlug(slug);
 
     if (!product) {
       return NextResponse.json(
@@ -19,12 +16,7 @@ export async function GET(
       );
     }
 
-    const parsedProduct = {
-      ...product,
-      sizes: JSON.parse(product.sizes),
-    };
-
-    return NextResponse.json(parsedProduct);
+    return NextResponse.json(product);
   } catch (error) {
     console.error("Error fetching product:", error);
     return NextResponse.json(
