@@ -5,10 +5,23 @@ import CatalogPreview from "@/components/sections/CatalogPreview";
 import QualitySection from "@/components/sections/QualitySection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/sections/CTASection";
+import PageScrollSpyController from "@/components/layout/PageScrollSpyController";
+
+const homeSectionIds = [
+  "inicio",
+  "features",
+  "beneficios",
+  "catalogo",
+  "nosotros",
+  "calidad",
+  "testimonios",
+  "contacto",
+];
 
 export default function Home() {
   return (
     <>
+      <PageScrollSpyController sectionIds={homeSectionIds} />
       <HeroSection />
       <FeaturesSection />
       <BenefitsSection />

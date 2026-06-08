@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import PageScrollSpyController from "@/components/layout/PageScrollSpyController";
 
 const sizeChart = [
   { size: "2XL", chest: "120-130 cm", chestMin: 120, chestMax: 130 },
@@ -84,8 +85,10 @@ export default function TutallaClient() {
 
   return (
     <>
+      <PageScrollSpyController sectionIds={["hero", "tabla-medidas"]} />
+
       {/* Page Hero */}
-      <section className="relative pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-warm overflow-hidden">
+      <section id="hero" className="relative pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-warm overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]">
           <div
             className="absolute inset-0"
@@ -120,7 +123,7 @@ export default function TutallaClient() {
       </section>
 
       {/* Size Calculator */}
-      <section className="py-12 md:py-20">
+      <section id="tabla-medidas" className="py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             ref={ref}

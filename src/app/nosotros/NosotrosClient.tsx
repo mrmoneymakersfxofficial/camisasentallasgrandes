@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { ChevronRight, Shirt, Users, Star, Heart, Leaf, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import PageScrollSpyController from "@/components/layout/PageScrollSpyController";
 
 const stats = [
   { icon: Users, value: "+500", label: "Clientes Felices" },
@@ -64,8 +65,10 @@ export default function NosotrosClient() {
 
   return (
     <>
+      <PageScrollSpyController sectionIds={["hero", "historia", "valores", "trayectoria", "cta"]} />
+
       {/* Page Hero */}
-      <section className="relative pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-warm overflow-hidden">
+      <section id="hero" className="relative pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-warm overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]">
           <div
             className="absolute inset-0"
@@ -99,7 +102,7 @@ export default function NosotrosClient() {
       </section>
 
       {/* Brand Story */}
-      <section className="py-16 md:py-24">
+      <section id="historia" className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Text */}
@@ -180,7 +183,7 @@ export default function NosotrosClient() {
       </section>
 
       {/* Values */}
-      <section className="py-16 md:py-24 bg-secondary/30">
+      <section id="valores" className="py-16 md:py-24 bg-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -223,7 +226,7 @@ export default function NosotrosClient() {
       </section>
 
       {/* Timeline */}
-      <section className="py-16 md:py-24">
+      <section id="trayectoria" className="py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -277,7 +280,7 @@ export default function NosotrosClient() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20">
+      <section id="cta" className="py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

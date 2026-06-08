@@ -20,6 +20,7 @@ import { Separator } from "@/components/ui/separator";
 import { useCartStore } from "@/store/cart";
 import { useFavoritesStore } from "@/store/favorites";
 import { useToast } from "@/hooks/use-toast";
+import PageScrollSpyController from "@/components/layout/PageScrollSpyController";
 
 interface Product {
   id: string;
@@ -101,6 +102,8 @@ export default function ProductDetailClient({
 
   return (
     <>
+      <PageScrollSpyController sectionIds={["producto", "relacionados"]} />
+
       {/* Breadcrumb */}
       <div className="bg-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
@@ -121,7 +124,7 @@ export default function ProductDetailClient({
       </div>
 
       {/* Product Detail */}
-      <section className="py-8 md:py-12">
+      <section id="producto" className="py-8 md:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Product Image */}
@@ -344,7 +347,7 @@ export default function ProductDetailClient({
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <section className="py-16 md:py-20 bg-secondary/30">
+        <section id="relacionados" className="py-16 md:py-20 bg-secondary/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">

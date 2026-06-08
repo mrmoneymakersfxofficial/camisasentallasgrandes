@@ -20,6 +20,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import PageScrollSpyController from "@/components/layout/PageScrollSpyController";
 
 const contactMethods = [
   {
@@ -261,8 +262,10 @@ export default function ContactoClient() {
 
   return (
     <>
+      <PageScrollSpyController sectionIds={["hero", "contacto-info"]} />
+
       {/* Page Hero */}
-      <section className="relative pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-warm overflow-hidden">
+      <section id="hero" className="relative pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-warm overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]">
           <div
             className="absolute inset-0"
@@ -294,7 +297,7 @@ export default function ContactoClient() {
       </section>
 
       {/* Contact Methods */}
-      <section className="py-12 md:py-16">
+      <section id="contacto-info" className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {contactMethods.map((method, i) => (

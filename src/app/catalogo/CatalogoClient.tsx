@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import PageScrollSpyController from "@/components/layout/PageScrollSpyController";
 import { ShoppingCart, Star, Search, SlidersHorizontal, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -127,8 +128,10 @@ export default function CatalogoClient() {
 
   return (
     <>
+      <PageScrollSpyController sectionIds={["hero", "productos"]} />
+
       {/* Page Hero Banner */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-warm overflow-hidden">
+      <section id="hero" className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-warm overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]">
           <div
             className="absolute inset-0"
@@ -159,7 +162,7 @@ export default function CatalogoClient() {
       </section>
 
       {/* Catalog Content */}
-      <section className="py-12 md:py-16">
+      <section id="productos" className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Search + Filter Toggle */}
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
