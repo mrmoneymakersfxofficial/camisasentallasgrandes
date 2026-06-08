@@ -126,9 +126,9 @@ export default function HeroSection() {
               ref={titleRef}
               className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
             >
-              <span className="text-gradient-gold">Algodon Peruano</span>
+              <span className="text-gradient-gold">Camisas de Vestir</span>
               <br />
-              <span className="text-foreground">de Lujo</span>
+              <span className="text-foreground">para Hombres de Talla Grande</span>
             </h1>
 
             {/* Subtitle */}
@@ -136,8 +136,8 @@ export default function HeroSection() {
               ref={subtitleRef}
               className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              Camisas Premium para Hombre Plus Size. Disenadas con orgullo peruano
-              para brindarte comodidad y elegancia excepcional.
+              En CTG nos especializamos exclusivamente en camisas de vestir para hombres de talla grande.
+              Confeccionadas en 100% algodón peruano, diseñadas para brindarte comodidad, elegancia y un mejor calce.
             </p>
 
             {/* CTA Buttons */}
@@ -171,16 +171,16 @@ export default function HeroSection() {
             {/* Trust badges */}
             <div className="flex flex-wrap gap-6 justify-center lg:justify-start pt-4">
               <div className="text-center">
+                <p className="text-2xl font-heading font-bold text-primary">18.5-22.5</p>
+                <p className="text-xs text-muted-foreground">Tallas de Cuello</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl font-heading font-bold text-primary">100%</p>
+                <p className="text-xs text-muted-foreground">Algodón Peruano</p>
+              </div>
+              <div className="text-center">
                 <p className="text-2xl font-heading font-bold text-primary">2XL-6XL</p>
-                <p className="text-xs text-muted-foreground">Tallas Disponibles</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-heading font-bold text-primary">+500</p>
-                <p className="text-xs text-muted-foreground">Clientes Felices</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-heading font-bold text-primary">Premium</p>
-                <p className="text-xs text-muted-foreground">Algodon Pima</p>
+                <p className="text-xs text-muted-foreground">Equivalencia</p>
               </div>
             </div>
           </div>
@@ -190,8 +190,8 @@ export default function HeroSection() {
             <div className="relative w-72 h-96 sm:w-80 sm:h-[28rem] md:w-96 md:h-[32rem]">
               <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl border-2 border-primary/20">
                 <Image
-                  src="/images/hero-shirt-1.png"
-                  alt="Camisa premium Algodon Peruano"
+                  src="/images/ctg-blanca-1.png"
+                  alt="Camisa de vestir CTG 100% algodón peruano"
                   fill
                   className="object-cover object-center"
                   priority

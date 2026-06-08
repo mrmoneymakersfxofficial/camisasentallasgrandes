@@ -58,21 +58,177 @@ const schedule = [
 ];
 
 const faqs = [
+  // ── Tallas y Medidas ──
   {
-    question: "¿Cuánto tarda el envío?",
-    answer: "Envíos a Lima metropolitana en 24-48 horas hábiles. Provincias en 3-5 días hábiles. Envío gratis en tu primera compra.",
+    question: "¿Qué tallas de camisas tienen disponibles?",
+    answer: "Trabajamos con tallas de cuello desde 18.5 hasta 22.5 pulgadas. Equivalencias aproximadas: 18.5 = 2XL, 19.5 = 3XL, 20.5 = 4XL, 21.5 = 5XL, 22.5 = 6XL. Si tiene dudas sobre su talla, podemos ayudarle por WhatsApp.",
   },
   {
-    question: "¿Qué métodos de pago aceptan?",
-    answer: "Aceptamos Yape, Plin y transferencia bancaria. Todos los pagos son seguros y fáciles de realizar.",
+    question: "¿Cómo puedo saber cuál es mi talla?",
+    answer: "La forma más sencilla es medir una camisa que le quede cómoda actualmente y comparar las medidas con nuestra tabla de tallas. Extienda completamente el cuello sobre una superficie plana y mida desde el centro del botón hasta la mitad del ojal. Esa medida corresponde a la talla del cuello.",
   },
   {
-    question: "¿Puedo devolver un producto?",
-    answer: "Sí, si el producto tiene defecto de fabricación o no es el que pediste, te realizamos el cambio sin costo adicional dentro de los 7 días.",
+    question: "¿Las camisas son realmente para hombres de talla grande?",
+    answer: "Sí. Nos especializamos exclusivamente en camisas para hombres de contextura grande. No son camisas estándar agrandadas, sino prendas pensadas para ofrecer mayor comodidad y una mejor apariencia.",
   },
   {
-    question: "¿Las tallas son ajustadas?",
-    answer: "Nuestros cortes son generosos y cómodos, diseñados especialmente para hombres de tallas grandes. Si estás entre dos tallas, te recomendamos la mayor.",
+    question: "¿Qué talla de camisa necesito si uso 2XL?",
+    answer: "Nuestra camisa de talla 18.5\" (48 cm de medida de cuello) equivale aproximadamente a una talla 2XL. Sin embargo, recomendamos siempre comparar las medidas con nuestra tabla de medidas, ya que cada persona tiene una contextura diferente.",
+  },
+  {
+    question: "¿Qué talla necesito si uso 3XL?",
+    answer: "Nuestra camisa de talla 19.5\" (50.5 cm de medida de cuello) equivale aproximadamente a una talla 3XL. Recomendamos comparar las medidas de una camisa cómoda con nuestra tabla de medidas.",
+  },
+  {
+    question: "¿Qué talla necesito si uso 4XL?",
+    answer: "Nuestra camisa de talla 20.5\" (52.5 cm de medida de cuello) equivale aproximadamente a una talla 4XL. Además de la medida de cuello, recomendamos revisar pecho, cintura, hombros y largo para un mejor ajuste.",
+  },
+  {
+    question: "¿Qué talla necesito si uso 5XL?",
+    answer: "Nuestra camisa de talla 21.5\" (55 cm de medida de cuello) equivale aproximadamente a una talla 5XL. Recomendamos revisar todas las medidas para lograr un mejor ajuste. Nuestro equipo puede asesorarlo por WhatsApp.",
+  },
+  {
+    question: "¿Qué talla necesito si uso 6XL?",
+    answer: "Nuestra camisa de talla 22.5\" (58 cm de medida de cuello) equivale aproximadamente a una talla 6XL. Es nuestra talla estándar más amplia, diseñada para brindar comodidad sin sacrificar elegancia.",
+  },
+  {
+    question: "¿Cómo medir el cuello para una camisa?",
+    answer: "Si va a medir una camisa que le queda bien: extienda completamente el cuello sobre una superficie plana, use una cinta métrica y mida desde el centro del botón hasta la mitad del ojal. Si mide su cuello directamente: coloque la cinta alrededor de la base del cuello, pasando ligeramente por debajo de la manzana de Adán, dejando espacio para uno o dos dedos.",
+  },
+  {
+    question: "¿Tienen camisas para hombres con barriga pronunciada?",
+    answer: "Sí. Nuestras camisas han sido desarrolladas considerando las necesidades de hombres de contextura robusta, incluyendo mayor amplitud en la zona del abdomen y cintura. Además, cuentan con un largo extendido que ayuda a mantener la camisa dentro del pantalón.",
+  },
+  // ── Características del Producto ──
+  {
+    question: "¿Las camisas son 100% algodón?",
+    answer: "Sí. Nuestras camisas están confeccionadas en 100% algodón peruano de alta calidad, una fibra reconocida mundialmente por su suavidad, transpirabilidad y durabilidad.",
+  },
+  {
+    question: "¿Qué beneficios tiene una camisa de 100% algodón?",
+    answer: "Mayor transpirabilidad, menor acumulación de olores, suavidad al contacto con la piel, mayor comodidad durante largas jornadas, y excelente durabilidad con los cuidados adecuados.",
+  },
+  {
+    question: "¿Por qué elegir una camisa de algodón y no una de poliéster?",
+    answer: "El algodón ofrece una sensación más fresca y natural sobre la piel. Proporciona mayor transpirabilidad, menor acumulación de olores, mayor suavidad al contacto, mejor confort durante largas jornadas y excelente durabilidad.",
+  },
+  {
+    question: "¿Las camisas de algodón son recomendables para pieles sensibles?",
+    answer: "Sí. Al tratarse de una fibra natural, el algodón suele ser una excelente alternativa para personas con piel sensible o quienes buscan mayor suavidad y comodidad durante el uso diario.",
+  },
+  {
+    question: "¿Qué tela es mejor para el clima peruano?",
+    answer: "Las fibras naturales como el algodón son ampliamente valoradas por su capacidad de transpiración, suavidad y comodidad. Utilizamos 100% algodón peruano, reconocido mundialmente por su calidad y durabilidad.",
+  },
+  {
+    question: "¿Las camisas tienen bolsillo en el pecho?",
+    answer: "No. Hemos optado por un diseño limpio sin bolsillo porque ofrece una apariencia más elegante y estilizada, evita volumen visual innecesario y permite que las líneas se vean más ordenadas.",
+  },
+  {
+    question: "¿Por qué las camisas CTG son más largas?",
+    answer: "Todas nuestras camisas tienen un largo delantero y posterior cuidadosamente desarrollado para mantenerse mejor dentro del pantalón. Esto ayuda a conservar una apariencia ordenada durante todo el día, incluso al sentarse, caminar o realizar movimientos cotidianos.",
+  },
+  {
+    question: "¿El cuello aprieta?",
+    answer: "No. Nuestras camisas cuentan con un cuello de diseño más cómodo y funcional, pensado para ofrecer mejor comodidad en hombres de cuello robusto. Las camisas con cuellos excesivamente altos suelen resultar incómodas para hombres con cuello grueso.",
+  },
+  {
+    question: "¿Qué son las presillas ocultas del cuello?",
+    answer: "Son pequeñas presillas ubicadas debajo del cuello que ayudan a mantenerlo mejor alineado y ordenado cuando la camisa se utiliza sin corbata.",
+  },
+  {
+    question: "¿Tienen camisas con puños para gemelos?",
+    answer: "Sí. Disponemos de modelos con puño tradicional y modelos con puño francés para utilizar gemelos (cufflinks), logrando una apariencia más distinguida.",
+  },
+  {
+    question: "¿Tienen camisas para usar con corbata?",
+    answer: "Sí. La mayoría de nuestros modelos pueden utilizarse perfectamente con corbata. Nuestras camisas incorporan un cuello elegante y funcional que mantiene una excelente presentación tanto con corbata tradicional como con corbatas slim o michis.",
+  },
+  {
+    question: "¿Tienen camisas para matrimonio, oficina o eventos formales?",
+    answer: "Sí. Contamos con camisas ideales para reuniones de trabajo, eventos corporativos, matrimonios, graduaciones, cenas formales, celebraciones especiales y eventos de etiqueta. Disponemos de modelos clásicos en blanco, celeste y otros tonos elegantes.",
+  },
+  {
+    question: "¿También venden camisas para esmoquin o etiqueta?",
+    answer: "Sí. Contamos con camisas especiales para eventos de etiqueta y ocasiones formales.",
+  },
+  // ── Compra y Pago ──
+  {
+    question: "¿Cómo puedo realizar una compra?",
+    answer: "Elija el modelo, confirme su talla, realice el pago y coordinamos el envío. Todo el proceso se realiza de forma sencilla por WhatsApp.",
+  },
+  {
+    question: "¿Qué formas de pago aceptan?",
+    answer: "Aceptamos transferencias bancarias, Yape, Plin y link de cobro. Todas las compras se coordinan directamente por WhatsApp para brindar una atención más personalizada.",
+  },
+  {
+    question: "¿Tienen pasarela de pago en la web?",
+    answer: "No. Actualmente todas las compras se coordinan directamente por WhatsApp para brindar una atención más personalizada.",
+  },
+  // ── Envíos ──
+  {
+    question: "¿Realizan envíos a provincias?",
+    answer: "Sí. Realizamos envíos a Lima Metropolitana y a todas las provincias del Perú mediante empresas de transporte reconocidas.",
+  },
+  {
+    question: "¿Qué empresas utilizan para los envíos?",
+    answer: "Trabajamos regularmente con Shalom y Olva Courier. También podemos coordinar otra empresa de transporte de su preferencia.",
+  },
+  {
+    question: "¿Cuánto demora un envío?",
+    answer: "Lima: normalmente entre 24 y 48 horas. Provincias: normalmente entre 24 y 72 horas.",
+  },
+  {
+    question: "¿Puedo enviar mi propio motorizado a recoger?",
+    answer: "Sí. Si desea una entrega más rápida en Lima, puede coordinar el recojo mediante su propio servicio de mensajería.",
+  },
+  // ── Cambios y Devoluciones ──
+  {
+    question: "¿Puedo cambiar la talla de una camisa?",
+    answer: "Sí. Aceptamos cambios de talla dentro de los 7 días posteriores a la recepción del producto.",
+  },
+  {
+    question: "¿Devuelven dinero?",
+    answer: "No realizamos devoluciones de dinero por cambios de opinión o elección incorrecta de talla. Recomendamos revisar las medidas antes de comprar y solicitar asesoría si tiene dudas.",
+  },
+  {
+    question: "¿Las camisas deben estar sin uso para realizar un cambio?",
+    answer: "Sí. La prenda debe encontrarse sin uso, sin lavado y en buen estado.",
+  },
+  // ── Camisas a Medida ──
+  {
+    question: "¿Realizan camisas a medida?",
+    answer: "Sí. También confeccionamos camisas a medida utilizando telas de algodón peruano e italiano.",
+  },
+  {
+    question: "¿Cuál es el precio de una camisa a medida?",
+    answer: "El precio depende de la talla, tela elegida y trabajo requerido. La cotización se realiza de manera personalizada.",
+  },
+  {
+    question: "¿Cuánto demora una camisa a medida?",
+    answer: "El tiempo de confección depende de la complejidad del pedido y la carga de trabajo del taller. Le informaremos el plazo estimado antes de confirmar.",
+  },
+  // ── Tienda Física ──
+  {
+    question: "¿Puedo visitar la tienda personalmente?",
+    answer: "Sí. Puede visitarnos en Miraflores previa coordinación.",
+  },
+  {
+    question: "¿Tienen estacionamiento?",
+    answer: "No contamos con estacionamiento propio, pero existen varias cocheras cercanas para mayor comodidad.",
+  },
+  {
+    question: "¿Ofrecen presentación para regalo?",
+    answer: "Sí. Podemos preparar una presentación especial para regalo previa coordinación.",
+  },
+  {
+    question: "¿Tienen Libro de Reclamaciones?",
+    answer: "Sí. Contamos con Libro de Reclamaciones Virtual conforme a la normativa peruana vigente.",
+  },
+  // ── Cuidados ──
+  {
+    question: "¿Cómo planchar correctamente una camisa de algodón?",
+    answer: "Recomendamos utilizar una plancha seca y atomizar ligeramente agua sobre la tela antes de comenzar el planchado. Este método ayuda a obtener un acabado más prolijo, respetando las características naturales del algodón.",
   },
 ];
 
