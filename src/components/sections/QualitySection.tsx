@@ -99,18 +99,22 @@ export default function QualitySection() {
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-gradient-gold rounded-3xl p-8 md:p-12 text-center text-white"
+              className="bg-gradient-gold rounded-3xl p-8 md:p-12 text-center text-white overflow-hidden"
             >
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 mb-6">
-                <HeartHandshake className="size-10" />
-              </div>
-              <h3 className="font-heading text-3xl md:text-4xl font-bold mb-3">
-                100% Algodón Peruano
-              </h3>
-              <p className="text-white/80 text-lg leading-relaxed max-w-md mx-auto">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
+              <div className="relative">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/15 border border-primary/20 mb-6">
+                  <HeartHandshake className="size-10 text-primary" />
+                </div>
+                <h3 className="font-heading text-3xl md:text-4xl font-bold mb-3 text-white">
+                  100% Algodón Peruano
+                </h3>
+                <p className="text-zinc-300 text-lg leading-relaxed max-w-md mx-auto">
                 Nuestro compromiso es ofrecerte prendas que combinen tradición,
                 calidad y confort. Cada camisa es una obra de arte textil.
               </p>
+              </div>
             </motion.div>
 
             {/* Care instructions */}

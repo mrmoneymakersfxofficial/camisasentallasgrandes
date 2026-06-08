@@ -4,8 +4,20 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingCart, Menu } from "lucide-react";
+import {
+  ShoppingCart,
+  Menu,
+  Home,
+  ShoppingBag,
+  Ruler,
+  Shirt,
+  Phone,
+  ChevronRight,
+  X,
+  MessageCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Sheet,
   SheetContent,
@@ -16,11 +28,11 @@ import { useCartStore } from "@/store/cart";
 import WhatsAppCheckout from "@/components/sections/WhatsAppCheckout";
 
 const navLinks = [
-  { label: "Inicio", href: "/" },
-  { label: "Catálogo", href: "/catalogo" },
-  { label: "Tu Talla", href: "/tutalla" },
-  { label: "Nosotros", href: "/nosotros" },
-  { label: "Contacto", href: "/contacto" },
+  { label: "Inicio", href: "/", icon: Home },
+  { label: "Catálogo", href: "/catalogo", icon: ShoppingBag, badge: "+20" },
+  { label: "Tu Talla", href: "/tutalla", icon: Ruler },
+  { label: "Nosotros", href: "/nosotros", icon: Shirt },
+  { label: "Contacto", href: "/contacto", icon: Phone },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -119,7 +131,7 @@ export default function Header() {
                 </AnimatePresence>
               </Button>
 
-              {/* Mobile Menu */}
+              {/* Mobile Menu — Luxury Drawer */}
               <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
                 <SheetTrigger asChild>
                   <Button
@@ -131,32 +143,107 @@ export default function Header() {
                     <Menu className="size-5" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-72">
-                  <SheetTitle className="font-heading text-primary text-lg">
-                    ALGODÓN PERUANO
-                  </SheetTitle>
-                  <nav className="flex flex-col gap-2 mt-8" aria-label="Menú móvil">
-                    {navLinks.map((link, i) => (
-                      <motion.div
-                        key={link.href}
-                        initial={{ x: 50, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: i * 0.1 }}
-                      >
+                <SheetContent
+                  side="right"
+                  hideClose
+                  className="w-80 max-w-[85vw] bg-white/95 backdrop-blur-md shadow-2xl border-l border-gray-100 rounded-l-3xl p-0 flex flex-col"
+                >
+                  {/* Header */}
+                  <div className="flex items-center justify-between p-6 border-b border-gray-100">
+                    <SheetTitle className="font-bold tracking-widest text-gray-900 text-sm uppercase">
+                      Algodón Peruano
+                    </SheetTitle>
+                    <button
+                      onClick={() => setMobileOpen(false)}
+                      className="p-2 text-gray-400 hover:text-gray-900 active:bg-gray-100 rounded-full transition-colors"
+                      aria-label="Cerrar menú"
+                    >
+                      <X className="size-5" />
+                    </button>
+                  </div>
+
+                  {/* Navigation Items */}
+                  <nav className="flex-1 flex flex-col px-4 py-4" aria-label="Menú móvil">
+                    {navLinks.map((link, i) => {
+                      const Icon = link.icon;
+                      const active = isActive(pathname, link.href);
+                      const animClass = [
+                        "animate-menu-fade-in",
+                        "animate-menu-fade-in-delay-1",
+                        "animate-menu-fade-in-delay-2",
+                        "animate-menu-fade-in-delay-3",
+                        "animate-menu-fade-in-delay-4",
+                      ][i];
+
+                      return (
                         <Link
+                          key={link.href}
                           href={link.href}
                           onClick={() => setMobileOpen(false)}
-                          className={`flex items-center px-4 py-3 text-lg font-medium rounded-lg transition-colors ${
-                            isActive(pathname, link.href)
-                              ? "text-primary bg-primary/5"
-                              : "text-foreground/80 hover:text-primary hover:bg-secondary/50"
+                          className={`flex items-center justify-between py-4 px-3 rounded-xl transition-all active:scale-[0.98] ${animClass} ${
+                            active
+                              ? "bg-primary/5"
+                              : "hover:bg-gray-50"
                           }`}
                         >
-                          {link.label}
+                          <div className="flex items-center gap-3.5">
+                            <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
+                              active
+                                ? "bg-primary/10"
+                                : "bg-gray-50"
+                            }`}>
+                              <Icon
+                                className={`size-[18px] transition-colors ${
+                                  active
+                                    ? "text-primary"
+                                    : "text-[#b38f4f]"
+                                }`}
+                                strokeWidth={active ? 2 : 1.8}
+                              />
+                            </div>
+                            <span className={`font-medium tracking-wide text-base transition-colors ${
+                              active
+                                ? "text-gray-900"
+                                : "text-gray-700"
+                            }`}>
+                              {link.label}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            {/* Dynamic badge for Catálogo */}
+                            {link.badge && (
+                              <span className="ml-2 px-2.5 py-0.5 text-[11px] font-bold rounded-full bg-primary/10 text-primary">
+                                {link.badge}
+                              </span>
+                            )}
+                            <ChevronRight className={`size-4 transition-colors ${
+                              active ? "text-primary" : "text-gray-300"
+                            }`} />
+                          </div>
                         </Link>
-                      </motion.div>
-                    ))}
+                      );
+                    })}
                   </nav>
+
+                  {/* Bottom Support Footer */}
+                  <div className="mt-auto p-6 bg-gray-50/80 border-t border-gray-100">
+                    <p className="text-xs text-gray-400 mb-3 tracking-wide">
+                      Atención personalizada Plus Size
+                    </p>
+                    <Button
+                      className="w-full bg-[#25D366] text-white hover:bg-[#20bd5a] py-5 text-sm font-medium rounded-xl gap-2 active:scale-[0.98] transition-transform"
+                      asChild
+                    >
+                      <a
+                        href="https://wa.me/51999999999?text=Hola,%20necesito%20ayuda%20con%20las%20camisas"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <MessageCircle className="size-4" />
+                        WhatsApp Directo
+                      </a>
+                    </Button>
+                  </div>
                 </SheetContent>
               </Sheet>
             </div>

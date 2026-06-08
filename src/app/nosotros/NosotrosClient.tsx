@@ -286,12 +286,15 @@ export default function NosotrosClient() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-gold rounded-3xl p-10 md:p-14 text-white"
+            className="bg-gradient-gold rounded-3xl p-10 md:p-14 text-white overflow-hidden"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
+            <div className="relative">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-white">
               ¿Listo para Encontrar tu Camisa Ideal?
             </h2>
-            <p className="text-white/80 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+            <p className="text-zinc-300 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
               Porque una buena camisa no debería obligarte a adaptarte a ella. Debería estar diseñada para adaptarse a ti. Ya sea para el trabajo, reuniones, viajes, celebraciones o eventos especiales, tenemos la camisa perfecta para ti.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -309,6 +312,7 @@ export default function NosotrosClient() {
               >
                 <Link href="/contacto">Contáctanos</Link>
               </Button>
+            </div>
             </div>
           </motion.div>
         </div>
