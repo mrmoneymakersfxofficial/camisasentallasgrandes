@@ -148,7 +148,7 @@ export default function Header() {
                 <SheetContent
                   side="right"
                   hideClose
-                  className="w-80 max-w-[85vw] bg-white/95 backdrop-blur-md shadow-2xl border-l border-gray-100 rounded-l-3xl p-0 flex flex-col"
+                  className="w-80 max-w-[85vw] bg-white/[0.97] backdrop-blur-xl shadow-2xl border-l border-gray-200/50 rounded-l-3xl p-0 flex flex-col"
                 >
                   {/* Header */}
                   <div className="flex items-center justify-between p-6 border-b border-gray-100">
@@ -184,20 +184,20 @@ export default function Header() {
                           onClick={() => setMobileOpen(false)}
                           className={`flex items-center justify-between py-4 px-3 rounded-xl transition-all active:scale-[0.98] ${animClass} ${
                             active
-                              ? "bg-primary/5"
-                              : "hover:bg-gray-50"
-                          }`}
+                              ? "bg-amber-50/60"
+                              : "hover:bg-gray-50/70"
+                          } ${i < navLinks.length - 1 ? "border-b border-gray-100/60" : ""}`}
                         >
                           <div className="flex items-center gap-3.5">
                             <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
                               active
-                                ? "bg-primary/10"
+                                ? "bg-amber-100/70"
                                 : "bg-gray-50"
                             }`}>
                               <Icon
                                 className={`size-[18px] transition-colors ${
                                   active
-                                    ? "text-primary"
+                                    ? "text-amber-700"
                                     : "text-[#b38f4f]"
                                 }`}
                                 strokeWidth={active ? 2 : 1.8}
@@ -205,7 +205,7 @@ export default function Header() {
                             </div>
                             <span className={`font-medium tracking-wide text-base transition-colors ${
                               active
-                                ? "text-gray-900"
+                                ? "text-amber-800"
                                 : "text-gray-700"
                             }`}>
                               {link.label}
@@ -214,12 +214,12 @@ export default function Header() {
                           <div className="flex items-center gap-2">
                             {/* Dynamic badge for Catálogo */}
                             {link.badge && (
-                              <span className="ml-2 px-2.5 py-0.5 text-[11px] font-bold rounded-full bg-primary/10 text-primary">
+                              <span className="ml-2 px-2.5 py-0.5 text-[11px] font-bold rounded-full bg-amber-100/80 text-amber-800">
                                 {link.badge}
                               </span>
                             )}
                             <ChevronRight className={`size-4 transition-colors ${
-                              active ? "text-primary" : "text-gray-300"
+                              active ? "text-amber-600" : "text-gray-300"
                             }`} />
                           </div>
                         </Link>
@@ -228,12 +228,12 @@ export default function Header() {
                   </nav>
 
                   {/* Bottom Support Footer */}
-                  <div className="mt-auto p-6 bg-gray-50/80 border-t border-gray-100">
-                    <p className="text-xs text-gray-400 mb-3 tracking-wide">
+                  <div className="mt-auto p-6 pb-10 bg-zinc-50 border-t border-gray-100 flex flex-col gap-3">
+                    <p className="text-xs tracking-wider uppercase text-gray-400 text-center font-semibold mb-2 block">
                       Atención personalizada Plus Size
                     </p>
                     <Button
-                      className="w-full bg-[#25D366] text-white hover:bg-[#20bd5a] py-5 text-sm font-medium rounded-xl gap-2 active:scale-[0.98] transition-transform"
+                      className="w-full bg-zinc-900 text-white hover:bg-zinc-800 py-3.5 text-sm font-medium tracking-wide rounded-xl shadow-sm transition-transform active:scale-[0.95] flex items-center justify-center gap-2"
                       asChild
                     >
                       <a
@@ -241,7 +241,7 @@ export default function Header() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <MessageCircle className="size-4" />
+                        <MessageCircle className="size-4 text-amber-400" />
                         WhatsApp Directo
                       </a>
                     </Button>

@@ -90,10 +90,8 @@ export default function RootLayout({
             className="flex-1 w-full overflow-y-auto overflow-x-hidden scroll-smooth"
             data-scroll-container
           >
-            <div className="pb-20 md:pb-0">
-              {children}
-              <Footer />
-            </div>
+            {children}
+            <Footer />
           </main>
 
           {/* BOTTOM NAVIGATION BAR: Completely static, un-scrollable */}
