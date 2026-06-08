@@ -97,7 +97,8 @@ export default function MobileBottomNav() {
         window.open(getWhatsAppUrl(), "_blank");
       } else if (tab.href) {
         if (tab.href === "/") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          const mainEl = document.querySelector('[data-scroll-container]') as HTMLElement;
+          if (mainEl) mainEl.scrollTo({ top: 0, behavior: "smooth" });
           if (pathname !== "/") {
             router.push("/");
           }
@@ -113,7 +114,7 @@ export default function MobileBottomNav() {
     <>
       {/* ── Bottom Navigation Bar ── */}
       <nav
-        className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
+        className="w-full flex-shrink-0 z-50 md:hidden"
         role="navigation"
         aria-label="Navegación móvil"
       >

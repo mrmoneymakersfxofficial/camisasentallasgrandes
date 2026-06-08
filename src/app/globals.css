@@ -131,14 +131,9 @@
   body {
     @apply bg-background text-foreground;
   }
-  /* Scroll margin for sections to account for fixed header (h-16 md:h-20 = 64px/80px) */
+  /* Scroll margin for sections — small breathing room from top of scroll container */
   section[id] {
-    scroll-margin-top: 5rem;
-  }
-  @media (min-width: 768px) {
-    section[id] {
-      scroll-margin-top: 6rem;
-    }
+    scroll-margin-top: 1rem;
   }
 }
 

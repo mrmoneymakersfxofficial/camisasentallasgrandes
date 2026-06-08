@@ -49,9 +49,11 @@ export default function Header() {
   const setCartOpen = useCartStore((s) => s.setOpen);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const mainEl = document.querySelector("[data-scroll-container]") as HTMLElement;
+    if (!mainEl) return;
+    const onScroll = () => setScrolled(mainEl.scrollTop > 20);
+    mainEl.addEventListener("scroll", onScroll, { passive: true });
+    return () => mainEl.removeEventListener("scroll", onScroll);
   }, []);
 
   // Detect if we're on the home page to decide header background
@@ -63,11 +65,11 @@ export default function Header() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`w-full flex-shrink-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-background/90 backdrop-blur-lg shadow-md border-b border-border/50"
             : isHome
-            ? "bg-transparent"
+            ? "bg-background/50 backdrop-blur-sm"
             : "bg-background/80 backdrop-blur-sm border-b border-border/30"
         }`}
       >

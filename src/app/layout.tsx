@@ -78,15 +78,27 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${playfair.variable} ${inter.variable} font-sans antialiased`}
+        className={`${playfair.variable} ${inter.variable} font-sans antialiased overflow-hidden`}
       >
-        <div className="min-h-screen flex flex-col">
+        <div className="h-[100dvh] w-screen flex flex-col overflow-hidden bg-background">
+          {/* HEADER: Completely static, un-scrollable */}
           <Header />
-          {/* pb-20 on mobile to account for fixed bottom nav (h ~80px) */}
-          <main className="flex-1 pb-20 md:pb-0">{children}</main>
-          <Footer />
+
+          {/* MAIN CONTENT: The ONLY area allowed to scroll */}
+          <main
+            id="app-main"
+            className="flex-1 w-full overflow-y-auto overflow-x-hidden scroll-smooth"
+            data-scroll-container
+          >
+            <div className="pb-20 md:pb-0">
+              {children}
+              <Footer />
+            </div>
+          </main>
+
+          {/* BOTTOM NAVIGATION BAR: Completely static, un-scrollable */}
+          <MobileBottomNav />
         </div>
-        <MobileBottomNav />
         <Toaster />
       </body>
     </html>
