@@ -28,7 +28,19 @@ export default function PageScrollSpyController({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const { scrollToSection } = useScrollSpy({ sectionIds: sections });
+  const { scrollToSection } = useScrollSpy(sections);
+
+  // Set initial active section if no hash in URL
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash && sections.length > 0) {
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${window.location.search}#${sections[0]}`
+      );
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Intercept all anchor (#) clicks on the page for smooth scroll
   useEffect(() => {

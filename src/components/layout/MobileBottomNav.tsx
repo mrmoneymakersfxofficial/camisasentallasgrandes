@@ -7,8 +7,10 @@ import {
   Home,
   Heart,
   ShoppingBag,
+  ShoppingCart,
   MessageCircle,
   Ruler,
+  LayoutGrid,
 } from "lucide-react";
 import {
   Sheet,
@@ -39,15 +41,9 @@ interface NavTab {
 
 const tabs: NavTab[] = [
   { id: "home", label: "Inicio", icon: Home, href: "/" },
+  { id: "catalog", label: "Catálogo", icon: LayoutGrid, href: "/catalogo" },
   { id: "favorites", label: "Favoritos", icon: Heart, action: "favorites", showBadge: true },
-  { id: "cart", label: "Carrito", icon: ShoppingBag, action: "cart", showBadge: true },
-  {
-    id: "whatsapp",
-    label: "WhatsApp",
-    icon: MessageCircle,
-    action: "whatsapp",
-    accentColor: "#25D366",
-  },
+  { id: "cart", label: "Carrito", icon: ShoppingCart, action: "cart", showBadge: true },
   { id: "size", label: "Mi Talla", icon: Ruler, href: "/tutalla" },
 ];
 
@@ -93,8 +89,6 @@ export default function MobileBottomNav() {
         setCartOpen(true);
       } else if (tab.action === "favorites") {
         setFavSheetOpen(true);
-      } else if (tab.action === "whatsapp") {
-        window.open(getWhatsAppUrl(), "_blank");
       } else if (tab.href) {
         if (tab.href === "/") {
           const mainEl = document.querySelector('[data-scroll-container]') as HTMLElement;
@@ -128,9 +122,11 @@ export default function MobileBottomNav() {
               const isCurrent =
                 tab.id === "home"
                   ? pathname === "/"
-                  : tab.id === "size"
-                    ? pathname === "/tutalla"
-                    : false;
+                  : tab.id === "catalog"
+                    ? pathname.startsWith("/catalogo")
+                    : tab.id === "size"
+                      ? pathname === "/tutalla"
+                      : false;
 
               const badgeCount =
                 tab.id === "cart"
@@ -139,7 +135,7 @@ export default function MobileBottomNav() {
                     ? favCount
                     : 0;
 
-              const isWhatsApp = tab.id === "whatsapp";
+              const isWhatsApp = false;
 
               return (
                 <button
@@ -150,9 +146,7 @@ export default function MobileBottomNav() {
                   } ${
                     isCurrent
                       ? "text-primary"
-                      : isWhatsApp
-                        ? "text-[#25D366]"
-                        : "text-muted-foreground"
+                      : "text-muted-foreground"
                   }`}
                   aria-label={tab.label}
                 >

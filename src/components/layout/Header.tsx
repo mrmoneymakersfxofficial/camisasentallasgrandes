@@ -110,6 +110,23 @@ export default function Header() {
 
             {/* Right actions */}
             <div className="flex items-center gap-2">
+              {/* WhatsApp Button */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="relative"
+                asChild
+              >
+                <a
+                  href="https://wa.me/51999999999?text=Hola,%20necesito%20ayuda%20con%20las%20camisas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Contactar por WhatsApp"
+                >
+                  <MessageCircle className="size-5 text-[#25D366]" />
+                </a>
+              </Button>
+
               {/* Cart Button */}
               <Button
                 variant="ghost"
