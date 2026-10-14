@@ -1,9 +1,9 @@
 {
-  "name": "algodon-peruano",
+  "name": "camisas-tallas-grandes-ctg",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
+    "dev": "next dev -p 11000",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ."

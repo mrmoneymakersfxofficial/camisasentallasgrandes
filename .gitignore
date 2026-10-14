@@ -71,3 +71,7 @@ worklog.md
 
 # Skills directory
 /skills/
+
+# Documents & scratch
+*.docx
+scratch/

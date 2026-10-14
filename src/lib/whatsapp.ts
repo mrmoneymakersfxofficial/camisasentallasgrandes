@@ -1,33 +1,51 @@
 /**
  * ═══════════════════════════════════════════════════════════════
- * WhatsApp Business Helper — Algodón Peruano (CTG)
+ * WhatsApp Business Helper — Camisas en Tallas Grandes (CTG)
  * ═══════════════════════════════════════════════════════════════
  *
  * SINGLE SOURCE OF TRUTH for:
- *   - WhatsApp number
- *   - Message generation (product, cart, favorites, contact)
+ *   - WhatsApp number: +51 970 298 099
+ *   - Email: ventas@camisasentallasgrandes.com
+ *   - Address: Av. Larco 812 Oficina 201 - Miraflores, Lima
+ *   - Message generation (product, cart, favorites, contact, sizes)
  *   - URL encoding
- *
- * ALL WhatsApp CTAs in the site MUST use these helpers.
- * Never hardcode the number or build messages inline.
  * ═══════════════════════════════════════════════════════════════
  */
 
 // ─── Config ───────────────────────────────────────────────────
 export const WHATSAPP_NUMBER = "51970298099";
 export const WHATSAPP_DISPLAY = "+51 970 298 099";
-export const BRAND_NAME = "Algodón Peruano";
-export const SITE_URL = "https://camisasentallasgrandes.vercel.app";
+export const BRAND_NAME = "CTG Camisas en Tallas Grandes";
+export const STORE_EMAIL = "ventas@camisasentallasgrandes.com";
+export const STORE_ADDRESS = "Av. Larco 812, Oficina / Tienda 201, Miraflores, Lima - Perú";
+export const STORE_MAPS_URL = "https://maps.app.goo.gl/3iueWagVDpRMTHAA8";
+export const SITE_URL = "https://www.camisasentallasgrandes.com";
+
+export const WHATSAPP_CONFIG = {
+  number: WHATSAPP_NUMBER,
+  display: WHATSAPP_DISPLAY,
+  getDirectUrl: (text: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
+};
+
+export const SOCIAL_LINKS = {
+  instagram: "https://www.instagram.com/camisasentallasgrandes",
+  tiktok: "https://www.tiktok.com/@camisasgrandesperu",
+  facebook: "https://www.facebook.com/Camisasentallasgrandes",
+  youtube: "https://www.youtube.com/@CamisasTallasGrandes",
+  videoMedidas: "https://youtu.be/WaABMdBPABc?si=hrpEPwIqR9Ualm4h",
+};
 
 // ─── Color map (English → Spanish) ─────────────────────────────
 const colorLabels: Record<string, string> = {
-  navy: "Navy",
-  white: "Blanco",
-  beige: "Beige",
+  navy: "Azul Formal / Marino",
+  white: "Blanco Ejecutivo",
+  beige: "Beige Natural",
   gray: "Gris Carbón",
-  black: "Negra",
-  blue: "Celeste",
-  striped: "Rayada Azul",
+  black: "Negro Elegance",
+  blue: "Celeste Clásico",
+  green: "Verde / Cuadros Casual",
+  striped: "Rayado Azul",
+  custom: "A Elección (Sastrería a Medida)",
 };
 
 function getColorLabel(color: string): string {
@@ -79,7 +97,6 @@ export function openWhatsApp(message: string): void {
 
 /**
  * Single product inquiry — used on product detail pages
- * Super personalized with full product info
  */
 export function generateProductMessage(
   product: WhatsAppProduct,
@@ -98,26 +115,24 @@ export function generateProductMessage(
   return [
     `👋 Hola, ${BRAND_NAME}.`,
     ``,
-    `Estoy interesado en la siguiente prenda:`,
+    `Estoy interesado en la siguiente camisa:`,
     ``,
     `👔 Producto: ${product.name}`,
-    `📏 Talla: ${sizeText}`,
+    `📏 Talla elegida: ${sizeText}`,
     `🎨 Color: ${getColorLabel(product.color)}`,
     `🧵 Tela: ${product.material}`,
     `📦 Cantidad: ${qty} ${qty === 1 ? "unidad" : "unidades"}`,
     `💰 Precio unitario: S/ ${product.price.toFixed(0)}`,
     ``,
-    `🔗 Producto:`,
+    `🔗 Enlace:`,
     productUrl,
     ``,
-    `📏 Tallas disponibles: ${product.sizes.join(", ")}`,
+    `Tallas en catálogo: ${product.sizes.join(", ")}`,
     ``,
     `Agradecería información sobre:`,
-    ``,
-    `✅ Disponibilidad`,
-    `✅ Precio final`,
-    `✅ Tiempo de entrega`,
-    `✅ Opciones de pago`,
+    `✅ Disponibilidad inmediata`,
+    `✅ Tiempo de envío (Lima / Provincia)`,
+    `✅ Métodos de pago (BCP / Yape / Plin)`,
     ``,
     `Muchas gracias.`,
   ].join("\n");
@@ -125,7 +140,6 @@ export function generateProductMessage(
 
 /**
  * Cart checkout — multiple products with full detail
- * Professional order-style message
  */
 export function generateCartMessage(
   items: WhatsAppCartItem[],
@@ -157,22 +171,20 @@ export function generateCartMessage(
   return [
     `👋 Hola, ${BRAND_NAME}.`,
     ``,
-    `Deseo cotizar los siguientes productos:`,
+    `Deseo confirmar el siguiente pedido de camisas:`,
     ``,
     productLines.join("\n\n"),
     ``,
     `📦 Total de prendas: ${totalItems}`,
-    `💰 Total estimado: S/ ${totalPrice.toFixed(0)}`,
+    `💰 Total a pagar: S/ ${totalPrice.toFixed(0)}`,
     ``,
     `👤 Cliente: ${customerName}`,
     `📱 Teléfono: ${customerPhone}`,
     ``,
-    `Agradecería información sobre:`,
-    ``,
-    `✅ Cotización con precios finales`,
-    `✅ Disponibilidad de stock`,
-    `✅ Tiempo de entrega`,
-    `✅ Opciones de pago (Yape / Plin / Transferencia)`,
+    `Deseo coordinar:`,
+    `✅ Confirmación de tallas con asesor`,
+    `✅ Envío a domicilio o agencia (Shalom / Olva)`,
+    `✅ Pago por Yape, BCP o Plin`,
     ``,
     `Muchas gracias.`,
   ].join("\n");
@@ -197,18 +209,13 @@ export function generateFavoritesMessage(
   return [
     `👋 Hola, ${BRAND_NAME}.`,
     ``,
-    `Estoy interesado en los siguientes productos que guardé como favoritos:`,
+    `Tengo guardados en mis favoritos los siguientes modelos:`,
     ``,
     productLines.join("\n\n"),
     ``,
-    `📦 Total de productos: ${items.length}`,
+    `📦 Total de modelos: ${items.length}`,
     ``,
-    `Agradecería información sobre:`,
-    ``,
-    `✅ Disponibilidad`,
-    `✅ Precio final`,
-    `✅ Tiempo de entrega`,
-    `✅ Opciones de pago`,
+    `¿Me pueden orientar sobre stock y disponibilidad para mi talla?`,
     ``,
     `Muchas gracias.`,
   ].join("\n");
@@ -217,21 +224,29 @@ export function generateFavoritesMessage(
 /**
  * Size consultation — used on tutalla page
  */
-export function generateSizeHelpMessage(chestCm?: string): string {
-  const chestLine = chestCm
-    ? `📏 Mi contorno de pecho es: ${chestCm} cm`
-    : "";
-
-  return [
+export function generateSizeHelpMessage(measures?: {
+  neck?: string;
+  chest?: string;
+  belly?: string;
+}): string {
+  const lines = [
     `👋 Hola, ${BRAND_NAME}.`,
     ``,
-    `Necesito ayuda para encontrar mi talla perfecta.`,
-    chestLine,
+    `Necesito asesoría personalizada para confirmar mi talla exacta de camisa.`,
+  ];
+
+  if (measures?.neck) lines.push(`📏 Cuello: ${measures.neck} cm / pulgadas`);
+  if (measures?.chest) lines.push(`📏 Pecho: ${measures.chest} cm`);
+  if (measures?.belly) lines.push(`📏 Barriga / Abdomen: ${measures.belly} cm`);
+
+  lines.push(
     ``,
-    `Podrían orientarme con la Tabla de Medidas CTG.`,
+    `Por favor ayúdenme a verificar según la Tabla Oficial de Medidas CTG.`,
     ``,
-    `Muchas gracias.`,
-  ].join("\n");
+    `Muchas gracias.`
+  );
+
+  return lines.join("\n");
 }
 
 /**
@@ -241,15 +256,12 @@ export function generateGeneralMessage(): string {
   return [
     `👋 Hola, ${BRAND_NAME}.`,
     ``,
-    `Me gustaría obtener más información sobre sus camisas premium en tallas grandes.`,
-    ``,
-    `📦 Tallas: 18.5 — 22.5`,
-    `🧵 100% Algodón Peruano`,
+    `Deseo solicitar información y asesoría sobre sus camisas de vestir en tallas grandes (18.5 a 22.5).`,
     ``,
     `Agradecería información sobre:`,
-    `✅ Catálogo completo`,
-    `✅ Precios`,
-    `✅ Envíos`,
+    `✅ Modelos disponibles en 100% algodón`,
+    `✅ Tabla de medidas y asesoría de calce`,
+    `✅ Visita a la tienda en Miraflores o envíos a todo el Perú`,
     ``,
     `Muchas gracias.`,
   ].join("\n");
@@ -265,7 +277,7 @@ export function generateContactMessage(data: {
   message: string;
 }): string {
   return [
-    `📞 *Nuevo mensaje de contacto*`,
+    `📞 *Nuevo mensaje de contacto web — CTG*`,
     ``,
     `👤 *Nombre:* ${data.name}`,
     data.email ? `📧 *Email:* ${data.email}` : "",

@@ -27,7 +27,7 @@ import { useFavoritesStore } from "@/store/favorites";
 import Link from "next/link";
 import Image from "next/image";
 
-const WHATSAPP_NUMBER = "51999999999";
+import { WHATSAPP_CONFIG } from "@/lib/whatsapp";
 
 interface NavTab {
   id: string;
@@ -50,8 +50,8 @@ const tabs: NavTab[] = [
 function getWhatsAppUrl(customText?: string) {
   const text =
     customText ||
-    "Hola, me interesa conocer más sobre las camisas plus size de Algodón Peruano. ¿Tienen disponibilidad?";
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    "Hola CTG, me interesa conocer más sobre las camisas de vestir en tallas grandes (2XL a 6XL). ¿Tienen disponibilidad?";
+  return WHATSAPP_CONFIG.getDirectUrl(text);
 }
 
 function TabIcon({ icon: Icon, size = 22, strokeWidth = 1.8 }: { icon: typeof Home; size?: number; strokeWidth?: number }) {

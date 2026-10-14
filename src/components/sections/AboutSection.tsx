@@ -34,16 +34,13 @@ export default function AboutSection() {
             </div>
 
             <p className="text-muted-foreground leading-relaxed text-lg">
-              En <strong className="text-foreground">Algodón Peruano</strong>, creemos
-              que cada hombre merece sentirse cómodo y elegante, sin importar su talla.
-              Nacimos con la misión de crear camisas premium que celebren la diversidad
-              de cuerpos.
+              En <strong className="text-foreground">CTG | Camisas en Tallas Grandes</strong>, línea especializada de Antobelly, creemos
+              que cada hombre merece sentirse cómodo y elegante, sin importar su contextura.
+              Nacimos con la misión de confeccionar camisas de vestir y sport que respeten las proporciones reales del cuerpo masculino.
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
-              Utilizamos únicamente algodón peruano de la más alta calidad, trabajado
-              por artesanos locales que conocen el oficio como nadie. Cada prenda es
-              una declaración de estilo y confianza.
+              Utilizamos 100% algodón peruano de la más alta calidad, con moldería exclusiva en cuellos desde 18.5&quot; hasta 22.5&quot; (2XL a 6XL). Atendemos en nuestro showroom exclusivo de Miraflores y enviamos con garantía a todo el país.
             </p>
 
             {/* Stats */}

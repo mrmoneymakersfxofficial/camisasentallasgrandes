@@ -15,6 +15,10 @@ import {
   ChevronRight,
   X,
   MessageCircle,
+  BookOpen,
+  CreditCard,
+  FileText,
+  Award,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -26,13 +30,21 @@ import {
 } from "@/components/ui/sheet";
 import { useCartStore } from "@/store/cart";
 import WhatsAppCheckout from "@/components/sections/WhatsAppCheckout";
+import { WHATSAPP_DISPLAY, buildWhatsAppURL } from "@/lib/whatsapp";
 
 const navLinks = [
   { label: "Inicio", href: "/", icon: Home },
-  { label: "Catálogo", href: "/catalogo", icon: ShoppingBag, badge: "+20" },
+  { label: "Catálogo", href: "/catalogo", icon: ShoppingBag, badge: "18.5 - 22.5" },
   { label: "Tu Talla", href: "/tutalla", icon: Ruler },
+  { label: "Blog", href: "/blog", icon: BookOpen },
   { label: "Nosotros", href: "/nosotros", icon: Shirt },
   { label: "Contacto", href: "/contacto", icon: Phone },
+];
+
+const secondaryLinks = [
+  { label: "Formas de Pago", href: "/formas-de-pago", icon: CreditCard },
+  { label: "Libro de Reclamaciones", href: "/libro-de-reclamaciones", icon: FileText },
+  { label: "Especial CTG Antobelly", href: "/ctg-camisas-tallas-grandes", icon: Award },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -56,7 +68,6 @@ export default function Header() {
     return () => mainEl.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Detect if we're on the home page to decide header background
   const isHome = pathname === "/";
 
   return (
@@ -79,11 +90,16 @@ export default function Header() {
             <Link
               href="/"
               className="flex items-center gap-2 group"
-              aria-label="Algodón Peruano - Ir al inicio"
+              aria-label="CTG Camisas en Tallas Grandes - Ir al inicio"
             >
-              <span className="font-heading text-xl md:text-2xl font-bold tracking-wide text-gradient-gold">
-                ALGODÓN PERUANO
-              </span>
+              <div className="flex flex-col">
+                <span className="font-heading text-lg md:text-2xl font-bold tracking-wide text-gradient-gold">
+                  CTG | TALLAS GRANDES
+                </span>
+                <span className="text-[10px] tracking-wider uppercase text-muted-foreground hidden sm:block">
+                  Línea Especializada de Antobelly
+                </span>
+              </div>
             </Link>
 
             {/* Desktop Nav */}
@@ -92,9 +108,9 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors group ${
+                  className={`relative px-3.5 py-2 text-sm font-medium transition-colors group ${
                     isActive(pathname, link.href)
-                      ? "text-primary"
+                      ? "text-primary font-semibold"
                       : "text-foreground/80 hover:text-primary"
                   }`}
                 >
@@ -110,20 +126,20 @@ export default function Header() {
 
             {/* Right actions */}
             <div className="flex items-center gap-2">
-              {/* WhatsApp Button */}
+              {/* WhatsApp Quick Button */}
               <Button
                 variant="ghost"
                 size="icon"
-                className="relative"
+                className="relative text-[#25D366] hover:bg-[#25D366]/10"
                 asChild
               >
                 <a
-                  href="https://wa.me/51999999999?text=Hola,%20necesito%20ayuda%20con%20las%20camisas"
+                  href={buildWhatsAppURL("Hola CTG, necesito asesoría sobre camisas en tallas grandes.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Contactar por WhatsApp"
                 >
-                  <MessageCircle className="size-5 text-[#25D366]" />
+                  <MessageCircle className="size-5" />
                 </a>
               </Button>
 
@@ -165,16 +181,16 @@ export default function Header() {
                 <SheetContent
                   side="right"
                   hideClose
-                  className="w-80 max-w-[85vw] bg-white/[0.97] backdrop-blur-xl shadow-2xl border-l border-gray-200/50 rounded-l-3xl p-0 flex flex-col"
+                  className="w-80 max-w-[85vw] bg-background/95 backdrop-blur-xl shadow-2xl border-l border-border rounded-l-3xl p-0 flex flex-col"
                 >
                   {/* Header */}
-                  <div className="flex items-center justify-between p-6 border-b border-gray-100">
-                    <SheetTitle className="font-bold tracking-widest text-gray-900 text-sm uppercase">
-                      Algodón Peruano
+                  <div className="flex items-center justify-between p-6 border-b border-border">
+                    <SheetTitle className="font-heading font-bold tracking-wider text-foreground text-sm uppercase">
+                      CTG | Tallas Grandes
                     </SheetTitle>
                     <button
                       onClick={() => setMobileOpen(false)}
-                      className="p-2 text-gray-400 hover:text-gray-900 active:bg-gray-100 rounded-full transition-colors"
+                      className="p-2 text-muted-foreground hover:text-foreground active:bg-secondary rounded-full transition-colors"
                       aria-label="Cerrar menú"
                     >
                       <X className="size-5" />
@@ -182,84 +198,86 @@ export default function Header() {
                   </div>
 
                   {/* Navigation Items */}
-                  <nav className="flex-1 flex flex-col px-4 py-4" aria-label="Menú móvil">
-                    {navLinks.map((link, i) => {
+                  <nav className="flex-1 flex flex-col px-4 py-4 overflow-y-auto" aria-label="Menú móvil">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground px-3 mb-2">
+                      Navegación Principal
+                    </p>
+                    {navLinks.map((link) => {
                       const Icon = link.icon;
                       const active = isActive(pathname, link.href);
-                      const animClass = [
-                        "animate-menu-fade-in",
-                        "animate-menu-fade-in-delay-1",
-                        "animate-menu-fade-in-delay-2",
-                        "animate-menu-fade-in-delay-3",
-                        "animate-menu-fade-in-delay-4",
-                      ][i];
 
                       return (
                         <Link
                           key={link.href}
                           href={link.href}
                           onClick={() => setMobileOpen(false)}
-                          className={`flex items-center justify-between py-4 px-3 rounded-xl transition-all active:scale-[0.98] ${animClass} ${
+                          className={`flex items-center justify-between py-3 px-3 rounded-xl transition-all ${
                             active
-                              ? "bg-amber-50/60"
-                              : "hover:bg-gray-50/70"
-                          } ${i < navLinks.length - 1 ? "border-b border-gray-100/60" : ""}`}
+                              ? "bg-primary/10 text-primary font-semibold"
+                              : "text-foreground hover:bg-secondary/70"
+                          }`}
                         >
-                          <div className="flex items-center gap-3.5">
-                            <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
-                              active
-                                ? "bg-amber-100/70"
-                                : "bg-gray-50"
-                            }`}>
-                              <Icon
-                                className={`size-[18px] transition-colors ${
-                                  active
-                                    ? "text-amber-700"
-                                    : "text-[#b38f4f]"
-                                }`}
-                                strokeWidth={active ? 2 : 1.8}
-                              />
-                            </div>
-                            <span className={`font-medium tracking-wide text-base transition-colors ${
-                              active
-                                ? "text-amber-800"
-                                : "text-gray-700"
-                            }`}>
-                              {link.label}
-                            </span>
+                          <div className="flex items-center gap-3">
+                            <Icon className="size-4 text-primary" />
+                            <span className="text-sm">{link.label}</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            {/* Dynamic badge for Catálogo */}
                             {link.badge && (
-                              <span className="ml-2 px-2.5 py-0.5 text-[11px] font-bold rounded-full bg-amber-100/80 text-amber-800">
+                              <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-primary/10 text-primary">
                                 {link.badge}
                               </span>
                             )}
-                            <ChevronRight className={`size-4 transition-colors ${
-                              active ? "text-amber-600" : "text-gray-300"
-                            }`} />
+                            <ChevronRight className="size-3.5 text-muted-foreground" />
                           </div>
                         </Link>
                       );
                     })}
+
+                    <div className="my-3 border-t border-border/60 pt-3">
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground px-3 mb-2">
+                        Páginas Oficiales
+                      </p>
+                      {secondaryLinks.map((sec) => {
+                        const Icon = sec.icon;
+                        const active = isActive(pathname, sec.href);
+                        return (
+                          <Link
+                            key={sec.href}
+                            href={sec.href}
+                            onClick={() => setMobileOpen(false)}
+                            className={`flex items-center justify-between py-2.5 px-3 rounded-xl transition-all text-xs ${
+                              active
+                                ? "bg-primary/10 text-primary font-semibold"
+                                : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2.5">
+                              <Icon className="size-3.5 text-primary" />
+                              <span>{sec.label}</span>
+                            </div>
+                            <ChevronRight className="size-3 text-muted-foreground" />
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </nav>
 
                   {/* Bottom Support Footer */}
-                  <div className="mt-auto p-6 pb-10 bg-zinc-50 border-t border-gray-100 flex flex-col gap-3">
-                    <p className="text-xs tracking-wider uppercase text-gray-400 text-center font-semibold mb-2 block">
-                      Atención personalizada Plus Size
+                  <div className="mt-auto p-6 bg-secondary/40 border-t border-border flex flex-col gap-3">
+                    <p className="text-[11px] tracking-wider uppercase text-muted-foreground text-center font-semibold">
+                      Asesoría de Tallas por WhatsApp
                     </p>
                     <Button
-                      className="w-full bg-zinc-900 text-white hover:bg-zinc-800 py-3.5 text-sm font-medium tracking-wide rounded-xl shadow-sm transition-transform active:scale-[0.95] flex items-center justify-center gap-2"
+                      className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-3.5 text-sm font-semibold rounded-xl shadow transition-transform active:scale-[0.98] flex items-center justify-center gap-2"
                       asChild
                     >
                       <a
-                        href="https://wa.me/51999999999?text=Hola,%20necesito%20ayuda%20con%20las%20camisas"
+                        href={buildWhatsAppURL("Hola CTG, deseo consultar disponibilidad de camisas.")}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <MessageCircle className="size-4 text-amber-400" />
-                        WhatsApp Directo
+                        <MessageCircle className="size-4" />
+                        WhatsApp: {WHATSAPP_DISPLAY}
                       </a>
                     </Button>
                   </div>

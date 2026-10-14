@@ -38,24 +38,24 @@ const values = [
 
 const timeline = [
   {
+    year: "2010",
+    title: "Herencia Antobelly",
+    description: "Inicia la trayectoria de Antobelly en Lima, especializándose en camisería y sastrería de alta gama con más de 15 años de experiencia.",
+  },
+  {
+    year: "2018",
+    title: "Creación de la Línea CTG",
+    description: "Identificando la falta de camisas con proporciones reales en el mercado, se crea CTG: moldería exclusiva en cuellos 18.5\" a 22.5\" (2XL a 6XL).",
+  },
+  {
     year: "2022",
-    title: "El Inicio",
-    description: "Nace la idea de crear camisas premium para hombres plus size tras descubrir la escasez de opciones de calidad en el mercado peruano.",
+    title: "Showroom Miraflores",
+    description: "Inauguración de nuestro exclusivo espacio en Av. Larco 812 Of. 201, con atención privada, probadores y asesoría de imagen personalizada.",
   },
   {
-    year: "2023",
-    title: "Primera Colección",
-    description: "Lanzamos nuestra primera línea de 12 modelos casuales y formales, trabajando con artesanos locales de algodón Pima peruano.",
-  },
-  {
-    year: "2024",
-    title: "Expansión Digital",
-    description: "Migramos a una plataforma digital moderna para llegar a todo Perú. Implementamos el asistente de tallas inteligente.",
-  },
-  {
-    year: "2025",
-    title: "Crecimiento Continuo",
-    description: "Superamos los 500 clientes satisfechos y ampliamos nuestro catálogo a más de 20 modelos con entregas a nivel nacional.",
+    year: "2026",
+    title: "Liderazgo Nacional",
+    description: "Consolidación como la marca referente de camisas plus size en Perú, con envíos diarios a Lima y todas las provincias del país.",
   },
 ];
 

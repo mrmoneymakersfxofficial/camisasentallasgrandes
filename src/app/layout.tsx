@@ -20,49 +20,52 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://algodonperuano.com"),
+  metadataBase: new URL("https://camisasentallasgrandes.com"),
   title: {
-    default: "Algodon Peruano Premium | Camisas Plus Size de Lujo",
-    template: "%s | Algodon Peruano",
+    default: "CTG | Camisas en Tallas Grandes para Hombre en Perú (2XL a 6XL)",
+    template: "%s | CTG - Camisas en Tallas Grandes",
   },
   description:
-    "Descubre nuestra coleccion exclusiva de camisas para hombre en tallas 2XL a 6XL. 100% algodon peruano premium. Envio a todo Peru.",
+    "Especialistas en camisas de vestir y sport en tallas grandes para hombre en Lima, Perú (18.5\" a 22.5\" de cuello / 2XL a 6XL). 100% algodón peruano. Showroom en Miraflores y envíos a todo el Perú.",
   keywords: [
-    "camisas plus size",
-    "camisas grandes",
-    "algodon peruano",
-    "camisas 2XL 3XL 4XL 5XL 6XL",
-    "camisas premium hombre",
-    "ropa talla grande Peru",
-    "camisas Pima",
-    "camisas algodon peruano",
+    "camisas en tallas grandes",
+    "camisas tallas grandes lima",
+    "camisas tallas extras lima",
+    "camisas 2xl 3xl 4xl 5xl 6xl peru",
+    "camisas cuello 18.5 a 22.5",
+    "camisas para hombres gordos lima",
+    "camisas hombre contextura gruesa",
+    "camisas miraflores tallas grandes",
+    "camisas algodon peruano tallas grandes",
+    "ctg camisas tallas grandes",
+    "camisas antobelly tallas grandes",
   ],
-  authors: [{ name: "Algodon Peruano" }],
+  authors: [{ name: "CTG - Camisas en Tallas Grandes" }],
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Algodon Peruano Premium | Camisas Plus Size de Lujo",
+    title: "CTG | Camisas en Tallas Grandes para Hombre en Perú",
     description:
-      "Coleccion exclusiva de camisas para hombre en tallas 2XL a 6XL. 100% algodon peruano premium.",
+      "Especialistas en camisas de vestir y sport para hombres de contextura grande. 100% algodón peruano, cuello cómodo y calce perfecto.",
     type: "website",
     locale: "es_PE",
-    siteName: "Algodon Peruano",
+    siteName: "CTG | Camisas en Tallas Grandes",
     images: [
       {
-        url: "/images/hero-shirt-1.png",
+        url: "/images/ctg-blanca-1.png",
         width: 1200,
         height: 630,
-        alt: "Algodon Peruano - Camisas Premium Plus Size",
+        alt: "CTG - Camisas en Tallas Grandes Lima Perú",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Algodon Peruano Premium | Camisas Plus Size de Lujo",
+    title: "CTG | Camisas en Tallas Grandes para Hombre en Perú",
     description:
-      "Coleccion exclusiva de camisas para hombre en tallas 2XL a 6XL. 100% algodon peruano premium.",
-    images: ["/images/hero-shirt-1.png"],
+      "Especialistas en camisas de vestir en tallas grandes. 100% algodón peruano, tallas 18.5\" a 22.5\" (2XL a 6XL).",
+    images: ["/images/ctg-blanca-1.png"],
   },
   robots: {
     index: true,

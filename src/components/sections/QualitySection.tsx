@@ -19,9 +19,9 @@ const highlights = [
   },
   {
     icon: ShieldCheck,
-    title: "Garantía de Calidad",
+    title: "Garantía de Calce y Talla",
     description:
-      "Cada camisa pasa por un riguroso control de calidad. Si no estás satisfecho, te devolvemos tu dinero.",
+      "Tienes hasta 7 días calendario para realizar cambios de talla con tu comprobante para asegurar tu calce ideal.",
   },
   {
     icon: Droplets,
