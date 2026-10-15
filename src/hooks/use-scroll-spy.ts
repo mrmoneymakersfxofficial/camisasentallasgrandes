@@ -22,18 +22,20 @@ export function useScrollSpy(sectionIds: string[]) {
   const isScrollingRef = useRef(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // Handle hash on mount
+  const hasHandledInitialHash = useRef(false);
+
+  // Handle hash ONLY on initial mount (never on re-renders)
   useEffect(() => {
+    if (hasHandledInitialHash.current) return;
     const hash = window.location.hash.replace("#", "");
     if (hash && sectionIds.includes(hash)) {
-      // Delay to ensure DOM is ready
+      hasHandledInitialHash.current = true;
       const timer = setTimeout(() => {
         const element = document.getElementById(hash);
         if (element) {
           isScrollingRef.current = true;
           element.scrollIntoView({ behavior: "smooth", block: "start" });
           setActiveId(hash);
-          // Reset flag after scroll animation completes
           setTimeout(() => {
             isScrollingRef.current = false;
           }, 1000);
@@ -41,7 +43,7 @@ export function useScrollSpy(sectionIds: string[]) {
       }, 300);
       return () => clearTimeout(timer);
     }
-  }, [sectionIds]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // IntersectionObserver to track visible sections
   useEffect(() => {

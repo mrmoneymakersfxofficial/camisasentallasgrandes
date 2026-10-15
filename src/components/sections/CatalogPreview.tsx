@@ -191,16 +191,19 @@ export default function CatalogPreview() {
                     {product.sizes.map((size) => (
                       <button
                         key={size}
-                        onClick={() =>
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
                           setSelectedSize((prev) => ({
                             ...prev,
                             [product.id]: size,
-                          }))
-                        }
-                        className={`px-2.5 py-1 text-[11px] font-medium rounded-lg border transition-all ${
+                          }));
+                        }}
+                        className={`px-2.5 py-1 text-[11px] font-medium rounded-lg border transition-all cursor-pointer ${
                           selectedSize[product.id] === size
-                            ? "bg-primary text-primary-foreground border-primary"
-                            : "border-border hover:border-primary/50 hover:bg-primary/5"
+                            ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                            : "border-border hover:border-primary/50 hover:bg-primary/5 text-foreground"
                         }`}
                       >
                         {size}
@@ -214,9 +217,14 @@ export default function CatalogPreview() {
                       S/ {product.price.toFixed(0)}
                     </p>
                     <Button
-                      onClick={() => handleAddToCart(product)}
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleAddToCart(product);
+                      }}
                       size="sm"
-                      className="bg-primary text-primary-foreground hover:bg-primary/90 gap-1.5"
+                      className="bg-primary text-primary-foreground hover:bg-primary/90 gap-1.5 cursor-pointer"
                     >
                       <ShoppingCart className="size-3.5" />
                       Agregar

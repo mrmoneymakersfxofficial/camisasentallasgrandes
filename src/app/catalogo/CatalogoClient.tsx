@@ -3,8 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import PageScrollSpyController from "@/components/layout/PageScrollSpyController";
+import { motion } from "framer-motion";
 import { ShoppingCart, Star, Search, SlidersHorizontal, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -88,7 +87,7 @@ export default function CatalogoClient() {
 
   const filteredProducts = products.filter((p) => {
     if (activeCategory !== "all" && p.category !== activeCategory) return false;
-    if (activeSize !== "all" && !p.sizes.includes(activeSize)) return false;
+    if (activeSize !== "all" && !p.sizes.some((s) => s.toLowerCase().includes(activeSize.toLowerCase()))) return false;
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       return (
@@ -128,8 +127,6 @@ export default function CatalogoClient() {
 
   return (
     <>
-      <PageScrollSpyController sectionIds={["hero", "productos"]} />
-
       {/* Page Hero Banner */}
       <section id="hero" className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-warm overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]">
@@ -206,16 +203,16 @@ export default function CatalogoClient() {
               </Tabs>
 
               <Select value={activeSize} onValueChange={setActiveSize}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[190px]">
                   <SelectValue placeholder="Filtrar talla" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">Todas las tallas</SelectItem>
-                  <SelectItem value="2XL">2XL</SelectItem>
-                  <SelectItem value="3XL">3XL</SelectItem>
-                  <SelectItem value="4XL">4XL</SelectItem>
-                  <SelectItem value="5XL">5XL</SelectItem>
-                  <SelectItem value="6XL">6XL</SelectItem>
+                  <SelectItem value="18.5">18.5&quot; (2XL)</SelectItem>
+                  <SelectItem value="19.5">19.5&quot; (3XL)</SelectItem>
+                  <SelectItem value="20.5">20.5&quot; (4XL)</SelectItem>
+                  <SelectItem value="21.5">21.5&quot; (5XL)</SelectItem>
+                  <SelectItem value="22.5">22.5&quot; (6XL)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -280,21 +277,13 @@ export default function CatalogoClient() {
               </p>
             </div>
           ) : (
-            <motion.div
-              layout
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              <AnimatePresence mode="popLayout">
-                {filteredProducts.map((product, index) => (
-                  <motion.div
-                    key={product.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
-                  >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProducts.map((product) => (
+                <div
+                  key={product.id}
+                  className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
                     {/* Image */}
                     <Link href={`/catalogo/${product.slug}`} className="block">
                       <div className="relative aspect-[3/4] overflow-hidden bg-muted">
@@ -357,16 +346,19 @@ export default function CatalogoClient() {
                           {product.sizes.map((size) => (
                             <button
                               key={size}
-                              onClick={() =>
+                              type="button"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
                                 setSelectedSize((prev) => ({
                                   ...prev,
                                   [product.id]: size,
-                                }))
-                              }
-                              className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-all ${
+                                }));
+                              }}
+                              className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-all cursor-pointer ${
                                 selectedSize[product.id] === size
-                                  ? "bg-primary text-primary-foreground border-primary"
-                                  : "border-border hover:border-primary/50 hover:bg-primary/5"
+                                  ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                                  : "border-border hover:border-primary/50 hover:bg-primary/5 text-foreground"
                               }`}
                             >
                               {size}
@@ -374,26 +366,31 @@ export default function CatalogoClient() {
                           ))}
                         </div>
                       </div>
-
-                      {/* Price & Add to Cart */}
-                      <div className="flex items-center justify-between pt-2">
-                        <p className="text-2xl font-heading font-bold text-primary">
-                          S/ {product.price.toFixed(0)}
-                        </p>
-                        <Button
-                          onClick={() => handleAddToCart(product)}
-                          size="sm"
-                          className="bg-primary text-primary-foreground hover:bg-primary/90 gap-1.5"
-                        >
-                          <ShoppingCart className="size-4" />
-                          Agregar
-                        </Button>
-                      </div>
                     </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
+                  </div>
+
+                  {/* Price & Add to Cart */}
+                  <div className="p-5 pt-0 flex items-center justify-between border-t border-border/20 mt-2">
+                    <p className="text-2xl font-heading font-bold text-primary">
+                      S/ {product.price.toFixed(0)}
+                    </p>
+                    <Button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleAddToCart(product);
+                      }}
+                      size="sm"
+                      className="bg-primary text-primary-foreground hover:bg-primary/90 gap-1.5 cursor-pointer"
+                    >
+                      <ShoppingCart className="size-4" />
+                      Agregar
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </section>

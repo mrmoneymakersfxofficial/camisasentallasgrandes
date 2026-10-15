@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, Star, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -72,7 +71,7 @@ export default function CatalogSection() {
 
   const filteredProducts = products.filter((p) => {
     if (activeCategory !== "all" && p.category !== activeCategory) return false;
-    if (activeSize !== "all" && !p.sizes.includes(activeSize)) return false;
+    if (activeSize !== "all" && !p.sizes.some((s) => s.toLowerCase().includes(activeSize.toLowerCase()))) return false;
     return true;
   });
 
@@ -125,16 +124,16 @@ export default function CatalogSection() {
           </Tabs>
 
           <Select value={activeSize} onValueChange={setActiveSize}>
-            <SelectTrigger className="w-[160px]">
+            <SelectTrigger className="w-[190px]">
               <SelectValue placeholder="Filtrar talla" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">Todas las tallas</SelectItem>
-              <SelectItem value="2XL">2XL</SelectItem>
-              <SelectItem value="3XL">3XL</SelectItem>
-              <SelectItem value="4XL">4XL</SelectItem>
-              <SelectItem value="5XL">5XL</SelectItem>
-              <SelectItem value="6XL">6XL</SelectItem>
+              <SelectItem value="18.5">18.5&quot; (2XL)</SelectItem>
+              <SelectItem value="19.5">19.5&quot; (3XL)</SelectItem>
+              <SelectItem value="20.5">20.5&quot; (4XL)</SelectItem>
+              <SelectItem value="21.5">21.5&quot; (5XL)</SelectItem>
+              <SelectItem value="22.5">22.5&quot; (6XL)</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -163,21 +162,12 @@ export default function CatalogSection() {
             </p>
           </div>
         ) : (
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredProducts.map((product) => (
-                <motion.div
-                  key={product.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
-                >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col justify-between"
+              >
                   {/* Image */}
                   <div className="relative aspect-[3/4] overflow-hidden bg-muted">
                     <Image
@@ -219,16 +209,19 @@ export default function CatalogSection() {
                         {product.sizes.map((size) => (
                           <button
                             key={size}
-                            onClick={() =>
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
                               setSelectedSize((prev) => ({
                                 ...prev,
                                 [product.id]: size,
-                              }))
-                            }
-                            className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-all ${
+                              }));
+                            }}
+                            className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-all cursor-pointer ${
                               selectedSize[product.id] === size
-                                ? "bg-primary text-primary-foreground border-primary"
-                                : "border-border hover:border-primary/50 hover:bg-primary/5"
+                                ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                                : "border-border hover:border-primary/50 hover:bg-primary/5 text-foreground"
                             }`}
                           >
                             {size}
@@ -243,20 +236,24 @@ export default function CatalogSection() {
                         S/ {product.price.toFixed(0)}
                       </p>
                       <Button
-                        onClick={() => handleAddToCart(product)}
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleAddToCart(product);
+                        }}
                         size="sm"
-                        className="bg-primary text-primary-foreground hover:bg-primary/90 gap-1.5"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 gap-1.5 cursor-pointer"
                       >
                         <ShoppingCart className="size-4" />
                         Agregar
                       </Button>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </AnimatePresence>
-          </motion.div>
-        )}
+            </div>
+          )}
       </div>
     </section>
   );

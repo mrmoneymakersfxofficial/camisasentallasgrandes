@@ -20,7 +20,6 @@ import { Separator } from "@/components/ui/separator";
 import { useCartStore } from "@/store/cart";
 import { useFavoritesStore } from "@/store/favorites";
 import { useToast } from "@/hooks/use-toast";
-import PageScrollSpyController from "@/components/layout/PageScrollSpyController";
 
 interface Product {
   id: string;
@@ -102,8 +101,6 @@ export default function ProductDetailClient({
 
   return (
     <>
-      <PageScrollSpyController sectionIds={["producto", "relacionados"]} />
-
       {/* Breadcrumb */}
       <div className="bg-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
@@ -217,11 +214,16 @@ export default function ProductDetailClient({
                   {product.sizes.map((size) => (
                     <button
                       key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-5 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-200 ${
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setSelectedSize(size);
+                      }}
+                      className={`px-5 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-200 cursor-pointer ${
                         selectedSize === size
                           ? "bg-primary text-primary-foreground border-primary shadow-md"
-                          : "border-border hover:border-primary/50 hover:bg-primary/5"
+                          : "border-border hover:border-primary/50 hover:bg-primary/5 text-foreground"
                       }`}
                     >
                       {size}

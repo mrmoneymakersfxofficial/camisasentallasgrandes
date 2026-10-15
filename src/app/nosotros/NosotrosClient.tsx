@@ -7,7 +7,6 @@ import { motion, useInView } from "framer-motion";
 import { ChevronRight, Shirt, Users, Star, Heart, Leaf, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import PageScrollSpyController from "@/components/layout/PageScrollSpyController";
 
 const stats = [
   { icon: Users, value: "+500", label: "Clientes Felices" },
@@ -65,8 +64,6 @@ export default function NosotrosClient() {
 
   return (
     <>
-      <PageScrollSpyController sectionIds={["hero", "historia", "valores", "trayectoria", "cta"]} />
-
       {/* Page Hero */}
       <section id="hero" className="relative pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-warm overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]">
