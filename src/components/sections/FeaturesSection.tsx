@@ -1,7 +1,5 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import { Shirt, Ruler, RefreshCw, Truck, ShoppingBag, CheckCircle2 } from "lucide-react";
 
 const features = [
@@ -43,74 +41,43 @@ const features = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
-  },
-};
-
 export default function FeaturesSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section className="py-20 md:py-28 bg-secondary/30" id="features">
+    <section className="py-20 md:py-28 bg-background relative" id="features">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
+        <div className="text-center mb-16">
+          <span className="text-xs uppercase tracking-[0.2em] text-primary font-bold mb-3 block">
+            Ingeniería Textil &amp; Patronaje Exclusivo
+          </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             ¿Por Qué <span className="text-gradient-gold">Elegir CTG?</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
             Porque una buena camisa no debería obligarte a adaptarte a ella.
             Debería estar diseñada para adaptarse a ti.
           </p>
-        </motion.div>
+        </div>
 
         {/* Features grid */}
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {features.map((feature) => (
-            <motion.div
+            <div
               key={feature.title}
-              variants={cardVariants}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group bg-card rounded-2xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+              className="group p-6 md:p-8 rounded-2xl bg-secondary/20 hover:bg-white hover:shadow-lg hover:shadow-primary/5 border border-border/40 hover:border-primary/30 transition-all duration-300 flex flex-col hover:-translate-y-1"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                <feature.icon className="size-7 text-primary" />
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <feature.icon className="size-6 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
-              <h3 className="font-heading text-lg font-semibold mb-3">
+              <h3 className="font-heading text-xl font-bold mb-2.5 text-foreground">
                 {feature.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {feature.description}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

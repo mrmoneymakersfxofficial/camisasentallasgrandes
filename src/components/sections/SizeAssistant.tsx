@@ -68,13 +68,7 @@ export default function SizeAssistant() {
   return (
     <section className="py-20 md:py-28 bg-secondary/30" id="talla">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mx-auto"
-        >
+        <div className="max-w-2xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-10">
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 mb-4">
@@ -200,7 +194,7 @@ export default function SizeAssistant() {
               </AnimatePresence>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

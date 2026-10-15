@@ -44,8 +44,6 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [api, setApiState] = useState<CarouselApi | undefined>(undefined);
   const [current, setCurrent] = useState(0);
 
@@ -79,12 +77,7 @@ export default function TestimonialsSection() {
   return (
     <section className="py-20 md:py-28 bg-secondary/30" id="testimonios">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
+        <div>
           {/* Section header */}
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -154,7 +147,7 @@ export default function TestimonialsSection() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

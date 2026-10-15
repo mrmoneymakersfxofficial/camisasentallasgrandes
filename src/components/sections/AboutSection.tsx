@@ -1,31 +1,22 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import { Shirt, Users, Star } from "lucide-react";
+import { Award, Users, Shirt, Star } from "lucide-react";
 
 const stats = [
-  { icon: Users, value: "+500", label: "Clientes Felices" },
+  { icon: Award, value: "10+", label: "Años de Experiencia" },
+  { icon: Users, value: "5,000+", label: "Clientes Satisfechos" },
   { icon: Shirt, value: "100%", label: "Algodón Peruano" },
   { icon: Star, value: "2XL-6XL", label: "Tallas Disponibles" },
 ];
 
 export default function AboutSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section className="py-20 md:py-28" id="nosotros">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <div>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                 Nuestra <span className="text-gradient-gold">Historia</span>
@@ -44,13 +35,10 @@ export default function AboutSection() {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 pt-6">
-              {stats.map((stat, i) => (
-                <motion.div
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
+              {stats.map((stat) => (
+                <div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.15 }}
                   className="text-center"
                 >
                   <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 mb-2">
@@ -62,18 +50,13 @@ export default function AboutSection() {
                   <p className="text-xs text-muted-foreground mt-0.5">
                     {stat.label}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-2 border-primary/10">
               <Image
                 src="/images/hero-shirt-2.png"
@@ -86,7 +69,7 @@ export default function AboutSection() {
             {/* Decorative */}
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
             <div className="absolute -top-6 -right-6 w-24 h-24 bg-accent/10 rounded-full blur-2xl" />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

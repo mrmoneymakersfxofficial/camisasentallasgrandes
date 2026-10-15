@@ -194,7 +194,7 @@ export default function ContactoClient() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <Card className="h-full border-border/70 hover:border-primary/40 transition-all hover:shadow-lg flex flex-col justify-between">
+                <Card className="h-full border-border/40 bg-white/60 backdrop-blur-xs hover:bg-white hover:border-primary/40 transition-all hover:shadow-md flex flex-col justify-between">
                   <CardContent className="p-6 space-y-4">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
@@ -232,7 +232,7 @@ export default function ContactoClient() {
           </div>
 
           {/* Store Location & Google Maps */}
-          <div className="rounded-3xl border border-border/80 bg-card p-6 md:p-10 shadow-sm mb-16 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="rounded-3xl border border-border/40 bg-white/60 backdrop-blur-xs p-6 md:p-10 shadow-xs mb-16 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <div>
                 <Badge variant="outline" className="border-primary/30 text-primary mb-3">
@@ -311,9 +311,9 @@ export default function ContactoClient() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {cocheras.map((c, idx) => (
-                <Card
+                <div
                   key={c.name}
-                  className="border-border/70 hover:border-primary/40 transition-all shadow-sm hover:shadow-md flex flex-col justify-between overflow-hidden"
+                  className="rounded-2xl border border-border/40 bg-white/70 backdrop-blur-xs hover:bg-white hover:border-primary/30 transition-all shadow-xs hover:shadow-md flex flex-col justify-between overflow-hidden"
                 >
                   <div>
                     <div className="relative h-44 w-full bg-muted overflow-hidden">
@@ -330,7 +330,7 @@ export default function ContactoClient() {
                       </div>
                     </div>
 
-                    <CardContent className="p-4 space-y-2">
+                    <div className="p-4 space-y-2">
                       <h3 className="font-heading font-semibold text-base text-foreground">
                         {c.name}
                       </h3>
@@ -338,7 +338,7 @@ export default function ContactoClient() {
                         <MapPin className="size-3.5 text-primary flex-shrink-0" />
                         {c.address}
                       </p>
-                    </CardContent>
+                    </div>
                   </div>
 
                   <div className="p-4 pt-0">
@@ -346,7 +346,7 @@ export default function ContactoClient() {
                       asChild
                       variant="outline"
                       size="sm"
-                      className="w-full text-xs gap-1.5 border-primary/20 hover:bg-primary/5"
+                      className="w-full text-xs gap-1.5 border-primary/20 hover:bg-primary/5 rounded-xl"
                     >
                       <a href={c.mapsUrl} target="_blank" rel="noopener noreferrer">
                         <span>Ver en Google Maps</span>
@@ -354,7 +354,7 @@ export default function ContactoClient() {
                       </a>
                     </Button>
                   </div>
-                </Card>
+                </div>
               ))}
             </div>
           </div>
@@ -363,7 +363,7 @@ export default function ContactoClient() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
             {/* Form */}
             <div id="formulario" className="lg:col-span-7">
-              <Card className="border-border/80 bg-card p-6 md:p-8 shadow-sm">
+              <div className="rounded-3xl border border-border/40 bg-white/70 backdrop-blur-xs p-6 md:p-8 shadow-xs">
                 <div className="mb-6 space-y-1">
                   <h3 className="font-heading text-xl md:text-2xl font-bold">
                     Envíanos un Mensaje
@@ -436,12 +436,12 @@ export default function ContactoClient() {
                     Enviar Consulta por WhatsApp
                   </Button>
                 </form>
-              </Card>
+              </div>
             </div>
 
             {/* Social Networks & Quick Help */}
             <div id="redes" className="lg:col-span-5 space-y-6">
-              <Card className="border-border/80 bg-secondary/30 p-6 space-y-4">
+              <div className="rounded-3xl border border-border/40 bg-white/70 backdrop-blur-xs p-6 space-y-4 shadow-xs">
                 <h4 className="font-heading font-bold text-lg text-foreground">
                   Síguenos en Redes Sociales
                 </h4>
@@ -454,7 +454,7 @@ export default function ContactoClient() {
                     href={SOCIAL_LINKS.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl bg-card border border-border/60 hover:border-primary/40 text-xs font-semibold text-foreground transition-colors group"
+                    className="flex items-center justify-between p-3 rounded-xl bg-background/50 hover:bg-white border border-border/40 hover:border-primary/40 text-xs font-semibold text-foreground transition-all group"
                   >
                     <span className="flex items-center gap-2.5">
                       <Instagram className="size-4 text-pink-500" />
@@ -467,7 +467,7 @@ export default function ContactoClient() {
                     href={SOCIAL_LINKS.tiktok}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl bg-card border border-border/60 hover:border-primary/40 text-xs font-semibold text-foreground transition-colors group"
+                    className="flex items-center justify-between p-3 rounded-xl bg-background/50 hover:bg-white border border-border/40 hover:border-primary/40 text-xs font-semibold text-foreground transition-all group"
                   >
                     <span className="flex items-center gap-2.5">
                       <span className="font-bold text-black dark:text-white">🎵</span>
@@ -480,7 +480,7 @@ export default function ContactoClient() {
                     href={SOCIAL_LINKS.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl bg-card border border-border/60 hover:border-primary/40 text-xs font-semibold text-foreground transition-colors group"
+                    className="flex items-center justify-between p-3 rounded-xl bg-background/50 hover:bg-white border border-border/40 hover:border-primary/40 text-xs font-semibold text-foreground transition-all group"
                   >
                     <span className="flex items-center gap-2.5">
                       <span className="font-bold text-blue-600">f</span>
@@ -493,7 +493,7 @@ export default function ContactoClient() {
                     href={SOCIAL_LINKS.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl bg-card border border-border/60 hover:border-primary/40 text-xs font-semibold text-foreground transition-colors group"
+                    className="flex items-center justify-between p-3 rounded-xl bg-background/50 hover:bg-white border border-border/40 hover:border-primary/40 text-xs font-semibold text-foreground transition-all group"
                   >
                     <span className="flex items-center gap-2.5">
                       <Youtube className="size-4 text-red-600" />
@@ -502,10 +502,10 @@ export default function ContactoClient() {
                     <ExternalLink className="size-3 text-muted-foreground group-hover:text-primary" />
                   </a>
                 </div>
-              </Card>
+              </div>
 
               {/* Guía en video box */}
-              <Card className="border-primary/20 bg-primary/5 p-6 space-y-3">
+              <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6 space-y-3 shadow-xs">
                 <div className="flex items-center gap-2 text-primary font-bold text-sm">
                   <Video className="size-4" />
                   <span>Video Tutorial de Toma de Medidas</span>
@@ -513,13 +513,13 @@ export default function ContactoClient() {
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   Aprende en menos de 2 minutos a medir una camisa extendida o directamente tu cuerpo para ordenar la talla perfecta.
                 </p>
-                <Button asChild size="sm" variant="outline" className="w-full text-xs border-primary/30 gap-1.5">
+                <Button asChild size="sm" variant="outline" className="w-full text-xs border-primary/30 gap-1.5 rounded-xl hover:bg-white">
                   <a href={SOCIAL_LINKS.videoMedidas} target="_blank" rel="noopener noreferrer">
                     <span>Ver Tutorial en YouTube</span>
                     <ExternalLink className="size-3" />
                   </a>
                 </Button>
-              </Card>
+              </div>
             </div>
           </div>
         </div>

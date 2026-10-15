@@ -1,25 +1,14 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
 import { MessageCircle, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function CTASection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section className="py-20 md:py-28" id="contacto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="relative bg-gradient-dark-gold rounded-3xl overflow-hidden"
-        >
+        <div className="relative bg-gradient-dark-gold rounded-3xl overflow-hidden shadow-xl">
           {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
@@ -49,11 +38,11 @@ export default function CTASection() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 size="lg"
-                className="bg-[#25D366] text-white hover:bg-[#20bd5a] text-base px-8 py-6 rounded-xl gap-2 shadow-lg"
+                className="bg-[#25D366] text-white hover:bg-[#20bd5a] text-base px-8 py-6 rounded-xl gap-2 shadow-lg font-semibold"
                 asChild
               >
                 <a
-                  href="https://wa.me/51999999999?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20sus%20camisas%20plus%20size"
+                  href="https://wa.me/51970298099?text=Hola%20CTG%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20camisas%20en%20tallas%20grandes"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -63,16 +52,15 @@ export default function CTASection() {
               </Button>
 
               <Button
-                variant="outline"
                 size="lg"
-                className="border-white/20 text-white hover:bg-white/10 text-base px-8 py-6 rounded-xl"
+                className="bg-white text-gray-950 hover:bg-neutral-100 hover:text-black font-bold text-base px-8 py-6 rounded-xl border-0 shadow-md transition-all"
                 asChild
               >
                 <Link href="/catalogo">Ver Catálogo</Link>
               </Button>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

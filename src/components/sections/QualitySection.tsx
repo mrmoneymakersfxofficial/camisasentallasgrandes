@@ -1,63 +1,43 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import {
-  ShieldCheck,
-  Droplets,
-  Wind,
-  HeartHandshake,
-  Sparkles,
-} from "lucide-react";
+import { Droplets, HeartHandshake, Sparkles, Shield, Wind, Sun } from "lucide-react";
 
 const highlights = [
   {
     icon: Sparkles,
-    title: "100% Algodón Peruano",
-    description:
-      "Utilizamos algodón Pima de la más alta calidad, cultivado en los valles de la costa norte del Perú.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Garantía de Calce y Talla",
-    description:
-      "Tienes hasta 7 días calendario para realizar cambios de talla con tu comprobante para asegurar tu calce ideal.",
-  },
-  {
-    icon: Droplets,
-    title: "Absorción Superior",
-    description:
-      "Nuestro algodón absorbe la humedad de forma natural, manteniéndote fresco todo el día.",
+    title: "Suavidad Superior",
+    description: "Tacto sedoso que mejora con cada lavada. La fibra larga del algodón peruano garantiza una textura inigualable.",
   },
   {
     icon: Wind,
-    title: "Transpirable y Suave",
-    description:
-      "La fibra larga del algodón Pima garantiza una tela extremadamente suave y fresca al tacto.",
+    title: "Transpirabilidad",
+    description: "Tejido fresco que permite la circulación del aire, manteniéndote cómodo incluso en los días más calurosos.",
+  },
+  {
+    icon: Shield,
+    title: "Durabilidad",
+    description: "Resistente al uso diario y lavadas frecuentes sin perder su forma ni la intensidad de su color original.",
+  },
+  {
+    icon: Sun,
+    title: "Hipoalergénico",
+    description: "Ideal para pieles sensibles. Fibras 100% naturales libres de químicos agresivos.",
   },
 ];
 
 const careInstructions = [
-  "Lavar a mano o máquina en ciclo suave con agua fría",
-  "No usar blanqueadores ni productos químicos fuertes",
-  "Secar al aire libre, evitar la secadora directa",
-  "Plancha a temperatura media del revés",
+  "Lavar con agua fría o tibia (máx. 30°C)",
+  "Usar detergente suave, no usar lejía",
+  "Secar a la sombra para proteger el color",
+  "Planchar a temperatura media con vapor",
   "No retorcer la prenda al escurrir",
 ];
 
 export default function QualitySection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section className="py-20 md:py-28" id="calidad">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6 }}
-        >
+        <div>
           {/* Section header */}
           <div className="text-center mb-14">
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -71,12 +51,9 @@ export default function QualitySection() {
 
           {/* Material highlights */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {highlights.map((item, i) => (
-              <motion.div
+            {highlights.map((item) => (
+              <div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="text-center p-6 rounded-2xl bg-card border border-border/50"
               >
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 mb-4">
@@ -88,19 +65,14 @@ export default function QualitySection() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Badge + Care */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             {/* 100% Badge */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-gradient-gold rounded-3xl p-8 md:p-12 text-center text-white overflow-hidden"
-            >
+            <div className="bg-gradient-gold rounded-3xl p-8 md:p-12 text-center text-white overflow-hidden relative">
               <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
               <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
               <div className="relative">
@@ -111,19 +83,14 @@ export default function QualitySection() {
                   100% Algodón Peruano
                 </h3>
                 <p className="text-zinc-300 text-lg leading-relaxed max-w-md mx-auto">
-                Nuestro compromiso es ofrecerte prendas que combinen tradición,
-                calidad y confort. Cada camisa es una obra de arte textil.
-              </p>
+                  Nuestro compromiso es ofrecerte prendas que combinen tradición,
+                  calidad y confort. Cada camisa es una obra de arte textil.
+                </p>
               </div>
-            </motion.div>
+            </div>
 
             {/* Care instructions */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-card rounded-2xl p-8 border border-border/50"
-            >
+            <div className="bg-card rounded-2xl p-8 border border-border/50">
               <h3 className="font-heading text-xl font-semibold mb-6 flex items-center gap-2">
                 <Droplets className="size-5 text-primary" />
                 Cuidados de tu Prenda
@@ -141,9 +108,9 @@ export default function QualitySection() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
