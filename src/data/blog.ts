@@ -455,7 +455,511 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "top-3-camisas-basicas-hombres-talla-grande",
+    title: "Top 3 Camisas Básicas para Hombres de Talla Grande: Descubre las 3 Esenciales",
+    excerpt:
+      "Tener estilo no significa tener muchas camisas, sino las correctas. Si eres de contextura ancha, descubre las 3 camisas indispensables (blanca, celeste y patrón sutil) para proyectar presencia y elegancia.",
+    category: "Consejos de Estilo",
+    readingTime: "5 min de lectura",
+    date: "15 Octubre, 2026",
+    author: "Equipo CTG Camisas Tallas Grandes",
+    coverImage: "/images/blog/blog-post6-img1.jpg",
+    featured: true,
+    content: [
+      {
+        type: "paragraph",
+        text: "Tener estilo no significa tener muchas camisas, sino tener las camisas correctas. Si eres un hombre de contextura ancha, elegir prendas básicas y bien diseñadas puede marcar una gran diferencia en cómo te ves y cómo te sientes.",
+      },
+      {
+        type: "paragraph",
+        text: "En este artículo te contamos cuáles son las 3 camisas esenciales que no deben faltar en tu clóset si usas tallas grandes, y cómo combinarlas para lucir impecable en la oficina, en reuniones o en eventos importantes.",
+      },
+      {
+        type: "heading2",
+        text: "1. Camisa blanca de vestir: el básico infaltable",
+      },
+      {
+        type: "paragraph",
+        text: "La camisa blanca es una prenda atemporal, elegante y poderosa. Funciona para entrevistas, reuniones de directorio, matrimonios, celebraciones o incluso con jeans clásicos en un look casual distinguido. Pero si usas una talla grande, no cualquier camisa blanca sirve.",
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post6-img2.png",
+        imageAlt: "Camisa blanca de vestir en talla grande CTG",
+        caption: "La camisa blanca formal en 100% algodón peruano: el lienzo imprescindible de todo caballero.",
+      },
+      {
+        type: "heading3",
+        text: "Qué buscar en una camisa blanca para hombres de contextura ancha:",
+      },
+      {
+        type: "list",
+        items: [
+          "Cuello cómodo: Si usas cuello 18.5, 19.5, 20.5, 21.5 o 22.5 pulgadas, asegúrate de que no apriete la garganta ni te sofoque al abotonarlo.",
+          "Largo adecuado: Que no se suba ni se salga del pantalón al sentarte o moverte.",
+          "Tela de calidad opaca: El algodón peruano de hilado denso evita transparencias indeseadas y aporta frescura y estructura sin rigidez.",
+          "Sin bolsillo en el pecho: Mantiene las líneas del torso limpias y estilizadas, evitando volumen visual innecesario.",
+        ],
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post6-img3.png",
+        imageAlt: "Estructura de camisa blanca de vestir CTG",
+        caption: "Largo delantero y posterior superior para una caída prolija dentro del pantalón.",
+      },
+      {
+        type: "heading2",
+        text: "2. Camisa celeste clara: versátil, funcional y favorecedora",
+      },
+      {
+        type: "paragraph",
+        text: "La camisa celeste es la aliada por excelencia para el día a día profesional: es ligera, confiable y menos rígida que la blanca, pero igualmente sofisticada. Combina a la perfección en la oficina, en reuniones de trabajo o con un blazer marino.",
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post6-img4.png",
+        imageAlt: "Camisa celeste clara formal CTG",
+        caption: "Tono celeste clásico: refresca la apariencia y proyecta cercanía ejecutiva.",
+      },
+      {
+        type: "heading3",
+        text: "Por qué es ideal para contextura ancha:",
+      },
+      {
+        type: "list",
+        items: [
+          "El tono celeste refresca y suaviza visualmente la silueta corporal.",
+          "Favorece cualquier tono de piel y transmite seguridad y profesionalismo.",
+          "En CTG ofrecemos modelos celeste clásico con cuello bajo y presillas ocultas, con o sin corbata.",
+        ],
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post6-img5.png",
+        imageAlt: "Ajuste perfecto en camisa celeste CTG",
+      },
+      {
+        type: "heading2",
+        text: "3. Camisa con patrón sutil: estilo con personalidad",
+      },
+      {
+        type: "paragraph",
+        text: "Una tercera camisa que todo hombre de talla grande debe tener es aquella que añade carácter sin perder sobriedad: camisas con rayas delgadas verticales (que estilizan y alargan visualmente la figura) o microtexturas discretas sobre una base de color sobrio.",
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post6-img6.png",
+        imageAlt: "Camisa con textura y patrón sutil CTG",
+        caption: "Las rayas finas verticales estilizan la postura y aportan dinamismo.",
+      },
+      {
+        type: "heading3",
+        text: "Cuándo lucirla:",
+      },
+      {
+        type: "list",
+        items: [
+          "Reuniones de negocios semi-formales o presentaciones donde quieras destacar.",
+          "Cenas y eventos sociales donde buscas verte pulcro y diferente.",
+          "Fines de semana combinada con pantalón chino beige o jean azul oscuro.",
+        ],
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post6-img7.png",
+        imageAlt: "Detalle de textura en camisa CTG",
+      },
+      {
+        type: "heading2",
+        text: "¿Qué tienen en común las tres camisas?",
+      },
+      {
+        type: "list",
+        items: [
+          "Cuello bajo y cómodo desde 18.5 hasta 22.5 pulgadas de cuello.",
+          "Largo pensado para hombres de contextura ancha (no se escapa del pantalón).",
+          "Tela 100% algodón peruano suave, fresca y transpirable.",
+          "Diseño pensado desde el cuerpo real, eliminando el corte cuadrado 'cajón'.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "Guía de Combinación Rápida:\n• Blanca: Con pantalón oscuro y corbata azul en eventos de gala o reuniones formales.\n• Celeste clara: Con pantalón chino beige o azul marino en la oficina o almuerzos de negocios.\n• Rayas o textura sutil: Con pantalón gris o jean oscuro para cenas o salidas casuales con clase.",
+      },
+      {
+        type: "heading2",
+        text: "Preguntas Frecuentes al Comprar tus Camisas en CTG",
+      },
+      {
+        type: "list",
+        items: [
+          "¿Dónde hacen envíos?: Enviamos a todo Lima y a todas las provincias del Perú vía Shalom, Olva Courier u otra agencia con seguimiento en tiempo real.",
+          "¿Puedo cambiar una camisa si no me queda?: Sí, en CTG cuentas con 7 días calendario de garantía para cambio de talla sin complicaciones (prenda con etiqueta intacta, sin uso ni lavado).",
+          "¿Cuáles son las formas de pago?: Aceptamos transferencias BCP e Interbank, Yape y Plin para todos los pedidos.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "por-que-elegir-camisas-de-algodon-peruano-tallas-grandes",
+    title: "¿Por qué elegir camisas de 100% Algodón Peruano si usas Tallas Grandes?",
+    excerpt:
+      "Si eres de contextura ancha, la tela hace toda la diferencia. Descubre por qué el algodón peruano es el material ideal para disfrutar de frescura, suavidad y durabilidad real.",
+    category: "Materiales & Calidad",
+    readingTime: "5 min de lectura",
+    date: "15 Octubre, 2026",
+    author: "Equipo CTG Camisas Tallas Grandes",
+    coverImage: "/images/blog/blog-post7-img1.png",
+    featured: false,
+    content: [
+      {
+        type: "paragraph",
+        text: "Si eres de contextura ancha, sabes lo difícil que puede ser encontrar una camisa que no solo te entre, sino que te haga sentir cómodo todo el día. En CTG apostamos por el algodón peruano 100% porque entendemos que, cuando se trata de camisas talla grande, la tela hace toda la diferencia. Hoy te contamos por qué esta fibra es tu mejor aliada para vestir con estilo y sin incomodidad.",
+      },
+      {
+        type: "heading2",
+        text: "¿Qué es el algodón peruano y por qué es tan valorado?",
+      },
+      {
+        type: "paragraph",
+        text: "El algodón peruano, especialmente en tejidos finos como el Dobby y el Pima, es reconocido a nivel mundial por su calidad. Posee fibras notablemente más largas y finas que otros tipos de algodón comercial, lo que se traduce en una tela con características superiores:",
+      },
+      {
+        type: "list",
+        items: [
+          "Extraordinariamente suave al contacto con la piel.",
+          "Fresca y con alta capacidad de transpiración natural.",
+          "Gran durabilidad ante lavados frecuentes sin desteñirse.",
+          "Caída favorecedora que acompaña las líneas del cuerpo con soltura.",
+        ],
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post7-img2.png",
+        imageAlt: "Textura y suavidad del algodón peruano CTG",
+        caption: "Fibras extralargas peruanas: suavidad inigualable y frescura durante todo el día.",
+      },
+      {
+        type: "heading2",
+        text: "1. Comodidad real para hombres de talla grande",
+      },
+      {
+        type: "paragraph",
+        text: "Cuando usas una camisa de tejido sintético o algodón rígido convencional, es muy común sentir tirantez, calor excesivo y rozaduras en el cuello, la espalda o el abdomen.",
+      },
+      {
+        type: "paragraph",
+        text: "El algodón peruano es suave y flexible por naturaleza. Esto permite:",
+      },
+      {
+        type: "list",
+        items: [
+          "Menos fricción en zonas sensibles como el cuello y las axilas.",
+          "Mayor frescura y ventilación, ideal para caballeros propensos a transpirar con facilidad.",
+          "Movimiento completamente libre y natural, sin la sensación acartonada de camisas comunes.",
+        ],
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post7-img3.png",
+        imageAlt: "Comodidad y calce holgado en camisa de algodón CTG",
+      },
+      {
+        type: "heading2",
+        text: "2. Ideal para piel sensible y climas cálidos",
+      },
+      {
+        type: "paragraph",
+        text: "Muchos hombres de contextura ancha tienen piel propensa a la irritación por roce o transpiración acumulada bajo fibras sintéticas. El algodón peruano es hipoalergénico y transpirable por definición natural.",
+      },
+      {
+        type: "list",
+        items: [
+          "Evita brotes e irritaciones en el cuello y pecho.",
+          "Impide la acumulación de sudor en espalda y axilas.",
+          "Permite lucir impecable durante 10 a 12 horas consecutivas.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "En ciudades de clima cálido como Piura, Iquitos, Chiclayo, Trujillo, Arequipa o durante el verano en Lima, una camisa de 100% algodón peruano marca la diferencia entre disfrutar del día o sufrir por el calor.",
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post7-img4.png",
+        imageAlt: "Frescura en climas cálidos con camisas CTG",
+      },
+      {
+        type: "heading2",
+        text: "3. En CTG diseñamos nuestras propias tallas",
+      },
+      {
+        type: "paragraph",
+        text: "Muchas marcas se limitan a escalar proporcionalmente tallas estándar hacia los costados. En CTG desarrollamos nuestra moldería desde cero para cuerpos anchos:",
+      },
+      {
+        type: "list",
+        items: [
+          "Cuellos cómodos y con espacio para respirar sin oprimir.",
+          "Largo delantero y posterior superior que evita que la prenda se levante al sentarte.",
+          "Tela 100% algodón peruano rigurosamente seleccionada por su peso, caída y durabilidad.",
+        ],
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post7-img5.png",
+        imageAlt: "Molde exclusivo CTG confeccionado en algodón peruano",
+      },
+      {
+        type: "callout",
+        text: "En resumen: Si usas talla grande, tu piel y tu imagen merecen 100% algodón peruano. No te conformes con prendas que solo 'te entran'. Una buena camisa tiene que quedarte bien, sentirse bien y durar por años.",
+      },
+    ],
+  },
+  {
+    slug: "como-cuidar-correctamente-tu-camisa-ctg",
+    title: "Cómo cuidar correctamente tu camisa: Mantén la elegancia por más tiempo",
+    excerpt:
+      "Tus camisas de algodón peruano merecen el mejor cuidado. Sigue estos 4 pasos prácticos de lavado, secado y planchado para conservar su forma, color y textura impecable.",
+    category: "Cuidado de Prendas",
+    readingTime: "4 min de lectura",
+    date: "15 Octubre, 2026",
+    author: "Equipo CTG Camisas Tallas Grandes",
+    coverImage: "/images/blog/blog-post8-img1.png",
+    featured: false,
+    content: [
+      {
+        type: "paragraph",
+        text: "Tus camisas CTG están confeccionadas con algodón peruano de alta calidad, pensadas para ofrecerte comodidad y estilo en cada ocasión. Pero incluso la mejor camisa necesita cuidados especiales para conservar su forma, color y caída favorecedora.",
+      },
+      {
+        type: "paragraph",
+        text: "A continuación, te compartimos una guía práctica para que tu camisa luzca impecable durante más tiempo.",
+      },
+      {
+        type: "heading2",
+        text: "Guía ideal para lavar y planchar tus camisas CTG",
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post8-img1.png",
+        imageAlt: "Guía de lavado y planchado para camisas CTG",
+        caption: "Consejos clave para preservar el 100% algodón peruano en óptimo estado.",
+      },
+      {
+        type: "heading3",
+        text: "✔️ 1. Lávalas con cuidado",
+      },
+      {
+        type: "list",
+        items: [
+          "Lava a mano o en lavadora en ciclo delicado.",
+          "Usa agua fría (máximo 30°C) para proteger las fibras naturales del algodón.",
+          "Utiliza detergente suave y evita blanqueadores agresivos con cloro.",
+        ],
+      },
+      {
+        type: "heading3",
+        text: "✔️ 2. Sécalas correctamente",
+      },
+      {
+        type: "list",
+        items: [
+          "Evita exponer la camisa directamente al sol abrasador, ya que puede debilitar las fibras y opacar los tonos.",
+          "Prefiere el secado al aire libre a la sombra.",
+          "Cuelga la camisa en una percha anatómica abotonando el primer botón para mantener el cuello alineado.",
+        ],
+      },
+      {
+        type: "heading3",
+        text: "✔️ 3. El planchado correcto importa",
+      },
+      {
+        type: "list",
+        items: [
+          "Evita el vapor excesivo directo a muy alta temperatura.",
+          "Atomiza un poco de agua limpia sobre la prenda y usa una plancha a temperatura media-seca para lograr un alisado prolijo y elegante.",
+          "Plancha primero el cuello (desde las puntas hacia el centro), luego puños, mangas y finalmente el cuerpo de la camisa.",
+        ],
+      },
+      {
+        type: "heading3",
+        text: "✔️ 4. Cuida la tela",
+      },
+      {
+        type: "list",
+        items: [
+          "No apliques perfumes o colonias directamente sobre la tela. Los componentes alcohólicos y aceites pueden generar manchas y dañar las fibras naturales del algodón.",
+          "Aplica tu perfume en la piel y deja que se absorba antes de vestirte.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "¿Tienes dudas sobre el cuidado de tu prenda o necesitas asesoría sobre tu talla exacta? Escríbenos directamente a nuestro WhatsApp oficial: +51 970 298 099.",
+      },
+    ],
+  },
+  {
+    slug: "como-se-ve-una-camisa-con-punos-gemelos-tallas-grandes",
+    title: "Cómo se ve una camisa con puños gemelos en tallas grandes: Elegancia y Distinción",
+    excerpt:
+      "Descubre cómo lucen los puños dobles franceses para gemelos en hombres de contextura ancha. Proporción visual, prestancia ejecutiva y consejos de estilo con o sin corbata.",
+    category: "Detalles de Sastrería",
+    readingTime: "6 min de lectura",
+    date: "15 Octubre, 2026",
+    author: "Equipo CTG Camisas Tallas Grandes",
+    coverImage: "/images/blog/blog-post9-img1.png",
+    featured: false,
+    content: [
+      {
+        type: "paragraph",
+        text: "Elegir una camisa de vestir elegante siendo un hombre de contextura ancha puede parecer difícil, pero no tiene por qué serlo. Una opción sofisticada, clásica y sumamente funcional es la camisa con puños gemelos (puño doble francés), que se abotona con gemelos o mancuernillas.",
+      },
+      {
+        type: "paragraph",
+        text: "¿Pero cómo se ve realmente en una talla extra grande? En este artículo te lo mostramos en detalle, para que compruebes que la elegancia y la distinción están hechas para cuerpos reales.",
+      },
+      {
+        type: "heading2",
+        text: "1. ¿Qué son los puños gemelos y por qué usarlos?",
+      },
+      {
+        type: "paragraph",
+        text: "Los puños gemelos son un tipo de puño doble que no lleva botones cosidos, sino que se dobla sobre sí mismo y se cierra mediante gemelos (mancuernillas). Es un detalle de alta sastrería que denota clase y autoridad, especialmente en eventos formales.",
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post9-img2.png",
+        imageAlt: "Camisa de vestir con puños gemelos CTG",
+        caption: "El puño francés otorga estructura y distinción a las muñecas.",
+      },
+      {
+        type: "heading3",
+        text: "Beneficios de los puños gemelos en tallas grandes:",
+      },
+      {
+        type: "list",
+        items: [
+          "Añade presencia y distinción a cualquier atuendo formal o de negocios.",
+          "Permite mostrar tu estilo personal a través del diseño de los gemelos elegidos.",
+          "Aporta estructura visual a la muñeca, equilibrando la contextura de los brazos.",
+          "Es ideal para bodas, aniversarios, cenas de gala o cuando quieras proyectar máxima seguridad.",
+        ],
+      },
+      {
+        type: "heading2",
+        text: "2. ¿Cómo se ve en un brazo ancho o muñeca gruesa?",
+      },
+      {
+        type: "paragraph",
+        text: "Muchas veces se piensa erróneamente que los puños gemelos son solo para contexturas delgadas. En realidad, bien diseñados, se ven aún mejor en brazos anchos porque:",
+      },
+      {
+        type: "list",
+        items: [
+          "Proporcionan equilibrio visual al antebrazo y a la caída de la manga.",
+          "Añaden peso y estructura al puño, evitando que la manga flote o se arrugue en exceso.",
+          "Evitan la rigidez de botones simples que en tallas grandes a menudo aprietan o jalan la tela.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "En CTG, los puños gemelos están diseñados con una amplitud de muñeca calculada al milímetro, lo que permite que el gemelo quede colocado en su lugar exacto —ni apretado ni suelto—, garantizando máxima comodidad.",
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post9-img3.jpg",
+        imageAlt: "Detalle de puño para gemelos en brazo ancho",
+        caption: "Equilibrio anatómico en puño y manga para contextura ancha.",
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post9-img4.jpg",
+        imageAlt: "Calce de gemelos metálicos CTG",
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post9-img5.jpg",
+        imageAlt: "Manga estructurada con puño francés",
+      },
+      {
+        type: "heading2",
+        text: "3. ¿Qué tipo de gemelos usar si eres de talla grande?",
+      },
+      {
+        type: "list",
+        items: [
+          "Gemelos de tamaño mediano o grande: Se ven proporcionados con el ancho de la manga y el porte del caballero.",
+          "Diseños clásicos y sobrios: Plata pulida, acero inoxidable, negro ónix o detalles nudo de metal.",
+          "Evita gemelos diminutos o con grabados imperceptibles que se pierdan a la vista.",
+          "Un gemelo bien elegido refuerza tu prestancia y comunica liderazgo, especialmente cuando vistes saco.",
+        ],
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post9-img6.png",
+        imageAlt: "Selección de gemelos clásicos para camisas talla grande",
+      },
+      {
+        type: "heading2",
+        text: "4. ¿Con qué tipo de camisa funciona mejor?",
+      },
+      {
+        type: "paragraph",
+        text: "No todas las camisas para gemelos son iguales. En CTG las confeccionamos con especificaciones rigurosas:",
+      },
+      {
+        type: "list",
+        items: [
+          "Largo de manga proporcional que asoma exactamente entre 1 y 1.5 cm por fuera del saco.",
+          "100% algodón peruano de tacto lujoso en tonos como Azul Francés, Celeste o Blanco.",
+          "Cuello amplio y bajo que no aprieta la nuez y mantiene las puntas firmes con presillas ocultas.",
+        ],
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post9-img7.png",
+        imageAlt: "Camisa formal con puños dobles y corbata elegante CTG",
+      },
+      {
+        type: "heading2",
+        text: "5. ¿Se puede usar sin corbata?",
+      },
+      {
+        type: "paragraph",
+        text: "¡Sí! Aunque muchos asocian los puños franceses a corbatas y trajes de gala, también lucen impecables en combinaciones modernas como:",
+      },
+      {
+        type: "list",
+        items: [
+          "Camisa abierta en el primer botón con blazer oscuro en cócteles o cenas.",
+          "Looks sofisticados contemporáneos donde los gemelos toman protagonismo protagónico.",
+          "Atuendos refinados con pantalón de vestir sin corbata para un estilo vanguardista.",
+        ],
+      },
+      {
+        type: "image",
+        imageSrc: "/images/blog/blog-post9-img8.png",
+        imageAlt: "Camisa con gemelos estilo moderno sin corbata",
+        caption: "Elegancia relajada: los gemelos aportan brillo y distinción incluso sin corbata.",
+      },
+      {
+        type: "heading2",
+        text: "6. ¿Y cómo se ve puesta en un hombre real?",
+      },
+      {
+        type: "paragraph",
+        text: "Una camisa de puños gemelos en talla grande no se ve disfrazada ni recargada cuando el corte es el adecuado. En nuestras sesiones con clientes reales, las camisas CTG destacan por su caída limpia, firmeza en el puño y una silueta que proyecta seguridad y carácter.",
+      },
+      {
+        type: "callout",
+        text: "Conclusión: El detalle está en el puño. Los puños gemelos son para hombres reales que valoran el buen vestir. En tallas extra grandes, potencian tu imagen sin exagerar. Y como toda buena prenda CTG, cuando te queda bien, te sientes mucho mejor.",
+      },
+    ],
+  },
 ];
+
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);
