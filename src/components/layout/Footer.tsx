@@ -193,6 +193,20 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+
+        <div className="mt-4 pt-4 border-t border-background/5 text-center text-xs">
+          <a
+            href="https://fastpagepro.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-background/60 hover:text-background transition-colors inline-flex items-center justify-center gap-1.5 group"
+          >
+            <span>Diseñado &amp; Desarrollado por</span>
+            <span className="text-[#D4AF37] group-hover:text-amber-300 font-semibold underline-offset-4 group-hover:underline transition-colors">
+              fastpagepro.com
+            </span>
+          </a>
+        </div>
       </div>
     </footer>
   );
